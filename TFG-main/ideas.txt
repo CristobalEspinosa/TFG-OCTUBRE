@@ -1,0 +1,20 @@
+-Cambiar diseño header   HECHOOOO
+-Arreglar menú desplegable de carta   HECHOOOO
+-Cambiar paginas para que necesitan iniciar sesion, dejarlas bien para cuando nos la pidan   HECHOOOO    
+-Cambiar registrar trabajador, es crear una pagina que sea usuarios con un datatables igual que en productos y que esté un enlace dentro de esa pagina 
+ para crear un nuevo usuario   HECHOOOO
+-Cambiar las peticiones de datos en vez de alerts, que sean modales   HECHOOOO
+-En mi perfil poder cambiar el correo y contraseña y algún campo que otro del perfil     HECHOOOO
+-Añadir campo boolean finalizado, y un campo horaRecogida, y siendoRealizado a la tabla pedido       HECHOOOO
+-Ver manera de poder pedir la hora en la que quiere recogerlo       HECHOOOO
+-Añadir botón en cesta que cambie el estado de finalizado      HECHOOOO
+-cuando el pedido este en finalizado no poder cambiar ni eliminar nada      HECHOOOO
+-Cuando un pedido esta marcado como realizado no se pueda anular       HECHOOOO
+-En pedidos.php tener un botón para poder si un pedido está siendo realizado     HECHOOOO
+-Cambiar pedidos.php para que solo se muestren los pedidos los cuales esten finalizados      HECHOOOO
+-Cambiar el diseño de pedidos.php, hacer 3 cuadrados/columnas en los que dividir los pedidos segun su estado
+-Añadir 392845798739 tipos de categorias para hacer un formulario dinamico y conectado a la bbdd
+-Controlar precios con variables en vez de con campos en la bbdd
+-Enviar un email cuando el pedido este realizado   NECESITA UN SERVIDOR SMTP Y NO SE PUEDE HACER, PERO ESTÁ DEFINIDO
+-Intentar meter hash para las contraseñas
+-TPV

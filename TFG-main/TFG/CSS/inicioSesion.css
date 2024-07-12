@@ -1,0 +1,112 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: beige; 
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container, .formulario {
+    width: 300px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    transition: all 0.5s ease;
+}
+
+.container:hover, .formulario:hover {
+    transform: translateY(-10px);
+    opacity: 0.9;
+}
+
+.container h1, .titulo {
+    text-align: center;
+    color: #8e64b8; 
+    margin-bottom: 30px;
+}
+
+/*titulo de hora de registrase*/
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.tituloo {
+    font-family: 'Pacifico', cursive;
+    font-size: 3em;
+    margin-right: 35px;
+    color: #8e64b8;
+    animation: colorfade 5s infinite;
+}
+
+@keyframes colorfade {
+    0%, 100% {
+        color: #8e64b8;
+    }
+    50% {
+        color: #5d0096;
+    }
+}
+
+
+
+.container input, .entrada {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.container button, .boton {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #8e64b8; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.container button:hover, .boton:hover {
+    background-color: beige; 
+}
+
+/*Enlace de volver atras*/
+.atras {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 18px;
+    text-decoration: none;
+    color: #8e64b8;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    overflow: hidden;
+}
+
+.atras:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 2px solid #5f1f9c;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.atras:hover {
+    color: #5f1f9c;
+}
+
+.atras:hover:before {
+    transform: scaleX(1);
+}

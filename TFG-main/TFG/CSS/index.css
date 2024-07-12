@@ -1,0 +1,39 @@
+/* generales */
+body {
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+}
+
+
+
+/*Imagen de fondo con letras*/
+.cantina-image {
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+    transition: color 0.3s ease; 
+}
+.cantina-image img:hover{
+    box-shadow: 30px 30px 50px #c7a9e6;
+    border: 0px;
+}
+.cantina-image img {
+    max-width: 100%;
+    height: auto;
+    opacity: 60%;
+    border-radius: 10px;
+    box-shadow: 30px 30px 50px #333;
+}
+
+.cantina-quote {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4vw;
+    color:#20211d; 
+    padding: 10px;
+    z-index: 2;
+}

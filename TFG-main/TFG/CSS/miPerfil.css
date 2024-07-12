@@ -1,0 +1,20 @@
+body {
+    background-color: beige;
+}
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+.profile-image-container {
+    width: 30%;
+}
+.profile-image {
+    width: 100%;
+    border-radius: 50%;
+}
+.profile-details {
+    width: 60%;
+    color: #8e64b8;
+    margin-top: 40px;
+}

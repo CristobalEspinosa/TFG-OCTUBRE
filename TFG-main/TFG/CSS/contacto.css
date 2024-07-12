@@ -1,0 +1,45 @@
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+p {
+    text-align: center;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.formm{
+    margin: 55px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    color: #333;
+    border: #c7a9e6 solid 2px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    width: 30%;
+}
+
+button:hover {
+    background-color: beige;
+}
+
+

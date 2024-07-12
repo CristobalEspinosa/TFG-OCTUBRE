@@ -1,0 +1,21 @@
+.col-md-6 img {
+    width: 500px;
+    height: auto;
+    border-radius: 20px;
+    margin: 25px 0 !important;
+    display: block; 
+    object-fit: contain;
+    box-shadow: 30px 30px 50px #333;
+}
+
+h3{
+    margin: 160px;
+    text-align: center;
+}
+
+h5{
+    margin: 130px -10px 130px 0px;
+    text-align: center;
+}
+
+

@@ -1,0 +1,87 @@
+body {
+    width:100%;
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+}
+.login-message {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .tituloReserva {
+    color: #6c757d;
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .pIniciar {
+    color: #6c757d;
+    font-size: 1.2em;
+  }
+  
+  .aIniciar {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .aIniciar:hover {
+    color: #0056b3;
+}
+.tituloReserva{
+    color: #583080;
+    text-align: center;
+    border-radius: 5px;
+}
+.formulario-pedido {
+    text-align: center;
+    background-color: beige;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.select-tipo{
+    color: #8e64b8;
+margin-top: 2px;
+margin-bottom: 15px;
+background-color: beige;
+}
+ .select-tipo :hover{
+    transition: background-color 0.3s ease;
+    background-color: #583080;
+
+ }
+.label-tipo{
+    color: #583080;
+    padding: 5px;
+}
+
+.boton-enviar {
+    background-color: #8e64b8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+/* boton bootstrap */
+.btn.btn-outline-warning {
+    color: #8e64b8;
+    border-color: #8e64b8;
+}
+
+.btn.btn-outline-warning:hover {
+    color: #fff;
+    background-color: #8e64b8;
+    border-color: #8e64b8;
+}
+
+ 

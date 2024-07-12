@@ -1,0 +1,9 @@
+.aIniciar {
+    color: rgb(116, 53, 116) ;
+    text-decoration: none;
+  }
+  
+
+  #usuarios td:nth-child(2), #usuarios td:nth-child(3), #usuarios td:nth-child(4), #usuarios td:nth-child(5),#usuarios td:nth-child(6) {
+    text-align: center;
+}

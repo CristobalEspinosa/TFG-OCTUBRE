@@ -1,0 +1,112 @@
+body {
+    width:100%;
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+}
+.allPedido {
+    font-family: 'Roboto', sans-serif;
+}
+.contenedor-principal {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
+    justify-content: center;
+    padding: 10px;
+    max-height: 80vh;
+    overflow-y: auto;  
+}
+
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: beige;
+    color: #8e64b8;
+    box-shadow: 10px 10px 20px #333;
+    
+}
+.card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transform: scale(1.03);
+    animation: rotating-border 2s linear infinite;
+    border:#a8329b 4px solid;
+}
+
+.pedido {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.linea {
+    margin-left: 10px;
+    background-color: bisque;
+}
+h1{
+    text-align: center;
+}
+@keyframes rotating-border {
+    0% { border-color: #8e64b8; }
+    25% { border-color: #9b4ba9; }
+    50% { border-color: #a8329b; }
+    75% { border-color: #b4198d; }
+    100% { border-color: #8e64b8; }
+}
+.botones {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: space-around;
+    height: 0;  
+    transition: height 0.3s ease;
+    overflow: hidden;  
+    visibility: hidden;  
+}
+
+.card:hover .botones {
+    height: auto; 
+    visibility: visible;  
+}
+
+.boton {
+    color: #fff;
+    background-color: #8e64b8;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.boton:hover {
+    background-color: #a8329b;
+}
+
+.card:hover .botones {
+    transform: translateY(0);
+}
+.realizado {
+    background-color: rgb(213, 207, 28);
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.pagado {
+    background-color: rgb(22, 102, 22);
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+}
+.siendoRealizado {
+    background-color: rgb(49, 78, 205);
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+}
+
