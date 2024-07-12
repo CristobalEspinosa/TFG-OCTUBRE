@@ -18,3 +18,6 @@
 -Enviar un email cuando el pedido este realizado   NECESITA UN SERVIDOR SMTP Y NO SE PUEDE HACER, PERO ESTÁ DEFINIDO
 -Intentar meter hash para las contraseñas
 -TPV
+
+
+FUNCIONA???
