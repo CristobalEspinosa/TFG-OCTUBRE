@@ -17,6 +17,9 @@ body {
     border-radius: 10px;
     transition: all 0.5s ease;
 }
+.container{
+    height: 80%;
+}
 
 .container:hover, .formulario:hover {
     transform: translateY(-10px);
@@ -109,4 +112,8 @@ body {
 
 .atras:hover:before {
     transform: scaleX(1);
+}
+.tresd{
+    width: 80%;
+    height: 80%;
 }

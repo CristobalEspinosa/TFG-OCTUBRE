@@ -12,6 +12,7 @@
 -Cuando un pedido esta marcado como realizado no se pueda anular       HECHOOOO
 -En pedidos.php tener un botón para poder si un pedido está siendo realizado     HECHOOOO
 -Cambiar pedidos.php para que solo se muestren los pedidos los cuales esten finalizados      HECHOOOO
+-Añadir decoraciones en 3d      HECHOOOO
 -Cambiar el diseño de pedidos.php, hacer 3 cuadrados/columnas en los que dividir los pedidos segun su estado
 -Añadir 392845798739 tipos de categorias para hacer un formulario dinamico y conectado a la bbdd
 -Controlar precios con variables en vez de con campos en la bbdd
