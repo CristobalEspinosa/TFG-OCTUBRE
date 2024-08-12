@@ -330,14 +330,36 @@ function obtenerLineasPedido($idPedido) {
     $sql->setFetchMode(PDO::FETCH_ASSOC);
     return $sql->fetchAll();
 }
-
+//pedidos.php
 function obtenerIdsPedidoFinalizados() {
     $conexion = conectar();
-    $sql = $conexion->prepare("SELECT `idPedido` FROM `pedido` WHERE `finalizado` = 1 ORDER BY `siendoRealizado` ASC");
+    $sql = $conexion->prepare("SELECT idPedido FROM pedido WHERE finalizado = 1 AND siendoRealizado=0 AND pagado =0 AND realizado=0");
     $sql->execute();
     $sql->setFetchMode(PDO::FETCH_ASSOC);
     return $sql->fetchAll(PDO::FETCH_COLUMN);
 }
+function obtenerIdsPedidosiendoRealizados() {
+    $conexion = conectar();
+    $sql = $conexion->prepare("SELECT idPedido FROM pedido WHERE siendoRealizado = 1");
+    $sql->execute();
+    $sql->setFetchMode(PDO::FETCH_ASSOC);
+    return $sql->fetchAll(PDO::FETCH_COLUMN);
+}
+function obtenerIdsPedidoRealizado() {
+    $conexion = conectar();
+    $sql = $conexion->prepare("SELECT idPedido FROM pedido WHERE realizado = 1");
+    $sql->execute();
+    $sql->setFetchMode(PDO::FETCH_ASSOC);
+    return $sql->fetchAll(PDO::FETCH_COLUMN);
+}
+function obtenerIdsPedidoPagado() {
+    $conexion = conectar();
+    $sql = $conexion->prepare("SELECT idPedido FROM pedido WHERE pagado = 1");
+    $sql->execute();
+    $sql->setFetchMode(PDO::FETCH_ASSOC);
+    return $sql->fetchAll(PDO::FETCH_COLUMN);
+}
+
 function obtenerPedidoPorUsuario($idUsuario) {
     $conexion = conectar();
     $sql = $conexion->prepare("SELECT `idPedido` FROM `pedido` WHERE `idUsuario` = :idUsuario");

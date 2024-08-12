@@ -25,8 +25,10 @@ if (isset($_GET['realizado'])) {
 // Obtener todos los IDs de pedido
 $pedidos = obtenerIdsPedidoFinalizados();
 
+echo "<div class='todos'>";
+echo "todos";
 echo "<div class='contenedor-principal'>";
-
+echo "contenedor principal";
 foreach ($pedidos as $idPedido) {
     // Obtener los detalles del pedido
     $detallesPedido = obtenerPedido($idPedido);
@@ -39,9 +41,12 @@ foreach ($pedidos as $idPedido) {
     echo "ID: " . $detallesPedido["idPedido"] . "<br>";
     echo "Usuario: " . $nombreUsuario . "<br>";
     echo "Fecha: " . $detallesPedido["fecha"]. "<br>";
-    if (isset($_GET['realizado2']) && $_GET['realizado2'] == $idPedido) {
+
+    // Verificar si el pedido está siendo realizado
+    if ($detallesPedido['siendoRealizado'] == 1) {
         echo "<div class='siendoRealizado'>Pedido está siendo realizado</div>";
     }
+
     echo "</div>";
 
     // Obtener las líneas de pedido
@@ -61,7 +66,7 @@ foreach ($pedidos as $idPedido) {
     if ($detallesPedido['realizado'] == 1) {
         echo "<a href='?no-realizado=$idPedido' class='boton'>No Terminado</a>";
     } else {
-        if (isset($_GET['realizado2']) && $_GET['realizado2'] == $idPedido) {
+        if ($detallesPedido['siendoRealizado'] == 1) {
             echo "<a href='?quitar-realizacion=$idPedido' class='boton'>Quitar Realización</a>";
             echo "<a href='?realizado=$idPedido' class='boton'>Terminado</a>";
         } else {
@@ -90,6 +95,7 @@ foreach ($pedidos as $idPedido) {
     echo "</div>";
 }
 
+echo "</div>";  
 echo "</div>";  
 ?>
 <?php 
