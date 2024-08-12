@@ -7,13 +7,58 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 .contenedor-principal {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    width: 100%;
     gap: 10px;
     justify-content: center;
     padding: 10px;
-    max-height: 80vh;
     overflow-y: auto;  
+    border: solid 2px black;
+    height: 100vh; /* Altura completa de la ventana */
+}
+
+.izquierda {
+    float: left; 
+    border: solid 2px red;
+    padding: 10px;
+    overflow-y: auto; 
+    width: 65%; /* Ajusta el ancho relativo */
+    height: 100%;
+}
+
+.derecha {
+    float: left; 
+    border: solid 2px blue;
+    padding: 10px;
+    overflow-y: auto;
+    width: 30%; /* Ajusta el ancho relativo */
+    height: 100%;
+}
+
+.abajo {
+    border: solid 2px orange;
+    overflow-y: auto;
+    border: solid 2px lime;
+}
+
+.abajo-izquierda {
+    float: left;
+    border: solid 2px orange;
+    padding: 10px;
+    overflow-y: auto;
+    width: 45%; /* Ajusta el ancho relativo */
+}
+
+.abajo-derecha {
+    float: left;
+    border: solid 2px green;
+    padding: 10px;
+    overflow-y: auto;
+    width: 45%; /* Ajusta el ancho relativo */
+}
+
+p{
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
 }
 
 
@@ -109,4 +154,3 @@ h1{
     padding: 10px;
     margin-top: 10px;
 }
-

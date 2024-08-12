@@ -53,7 +53,7 @@ function compruebaUsuario($correo, $contrasena) {
 //CAMBIAR ESTADO PARA SABER SI ESTA PAGADO Y/O REALIZADO Y/O SIENDO REALIZADO
 function marcarComoRealizado($idPedido) {
     $conexion = conectar();
-    $sql = $conexion->prepare("UPDATE pedido SET realizado=1 WHERE idPedido=:idPedido");
+    $sql = $conexion->prepare("UPDATE pedido SET realizado=1 ,  siendoRealizado=0 WHERE idPedido=:idPedido");
     $sql->bindParam(':idPedido', $idPedido);
     $sql->execute();
 
@@ -94,7 +94,7 @@ function marcarComoPagado($idPedido) {
     $precio = $sqlPrecio->fetch(PDO::FETCH_ASSOC)['precioPedido'];
 
     // Marca el pedido como pagado
-    $sql = $conexion->prepare("UPDATE pedido SET pagado=1 WHERE idPedido=:idPedido");
+    $sql = $conexion->prepare("UPDATE pedido SET pagado=1 , realizado=0 WHERE idPedido=:idPedido");
     $sql->bindParam(':idPedido', $idPedido);
     $sql->execute();
 
