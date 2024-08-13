@@ -1,5 +1,4 @@
 body {
-    width:100%;
     font-family: 'Roboto', sans-serif;
     margin: 0 auto;
 }
@@ -7,60 +6,55 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 .contenedor-principal {
-    width: 100%;
+    width: 98%;
     gap: 10px;
     justify-content: center;
-    padding: 10px;
-    overflow-y: auto;  
-    border: solid 2px black;
+    padding: 10px; 
     height: 100vh; /* Altura completa de la ventana */
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas se ajusten en varias filas */
 }
 
 .izquierda {
     float: left; 
-    border: solid 2px red;
+    border: solid 2px #8e64b8;
     padding: 10px;
     overflow-y: auto; 
-    width: 65%; /* Ajusta el ancho relativo */
+    width: 55%; /* Ajusta el ancho relativo */
     height: 100%;
+    box-shadow: 10px 10px 20px #333;
 }
 
 .derecha {
-    float: left; 
-    border: solid 2px blue;
+    float: left;
+    border: solid 2px #8e64b8;
     padding: 10px;
     overflow-y: auto;
-    width: 30%; /* Ajusta el ancho relativo */
+    width: 41.8%; 
     height: 100%;
+    box-shadow: 10px 10px 20px #333;
+    display: flex;
+    flex-direction: column; 
 }
 
 .abajo {
-    border: solid 2px orange;
     overflow-y: auto;
-    border: solid 2px lime;
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between; 
 }
 
-.abajo-izquierda {
-    float: left;
-    border: solid 2px orange;
-    padding: 10px;
-    overflow-y: auto;
-    width: 45%; /* Ajusta el ancho relativo */
+.abajo-izquierda, .abajo-derecha {
+    float: none; /* Elimina el float */
+    width: 48%; /* Ajusta el ancho relativo */
+    box-shadow: 10px 10px 20px #333;
 }
 
-.abajo-derecha {
-    float: left;
-    border: solid 2px green;
-    padding: 10px;
-    overflow-y: auto;
-    width: 45%; /* Ajusta el ancho relativo */
-}
-
-p{
+.dentroCards{
     font-family: 'Roboto', sans-serif;
     text-align: center;
+    color:#a8329b;
 }
-
 
 .card {
     border: 1px solid #ccc;
@@ -69,8 +63,16 @@ p{
     background-color: beige;
     color: #8e64b8;
     box-shadow: 10px 10px 20px #333;
-    
+    width: 325px; /* Ancho estático */
+    height: calc(100vh / 6); /* Altura calculada */
+    margin: 10px; /* Espacio entre las tarjetas */
+    float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+
+
 .card:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     transform: scale(1.03);

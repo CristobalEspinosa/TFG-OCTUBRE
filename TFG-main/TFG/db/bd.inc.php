@@ -164,7 +164,7 @@ function marcarComoNoFinalizado($idPedido) {
 
 function marcarComoNoPagado($idPedido) {
     $conexion = conectar();
-    $sql = $conexion->prepare("UPDATE pedido SET pagado=0 WHERE idPedido=:idPedido");
+    $sql = $conexion->prepare("UPDATE pedido SET pagado=0 , realizado=1 WHERE idPedido=:idPedido");
     $sql->bindParam(':idPedido', $idPedido);
     $sql->execute();
 }
