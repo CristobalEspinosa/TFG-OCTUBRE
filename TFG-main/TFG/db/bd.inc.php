@@ -333,7 +333,7 @@ function obtenerLineasPedido($idPedido) {
 //pedidos.php
 function obtenerIdsPedidoFinalizados() {
     $conexion = conectar();
-    $sql = $conexion->prepare("SELECT idPedido FROM pedido WHERE finalizado = 1 AND siendoRealizado=0 AND pagado =0 AND realizado=0");
+    $sql = $conexion->prepare("SELECT idPedido FROM pedido WHERE finalizado = 1 AND (siendoRealizado = 0 OR siendoRealizado IS NULL) AND pagado = 0 AND realizado = 0");
     $sql->execute();
     $sql->setFetchMode(PDO::FETCH_ASSOC);
     return $sql->fetchAll(PDO::FETCH_COLUMN);
