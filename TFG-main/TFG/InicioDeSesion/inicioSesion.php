@@ -10,21 +10,39 @@
     <header>
         <a href="/TFG-main/TFG/index.php" class="atras">Volver atrás</a>
     </header>
-    <div class="tresd">
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.3/build/spline-viewer.js"></script>
-    <spline-viewer loading-anim-type="spinner-big-light" url="https://prod.spline.design/heiNfcmdzfmGmbCt/scene.splinecode"></spline-viewer>
-    </div> 
     <div class="container">
-            <h1>Iniciar sesión</h1>
-            <form action="compruebaLogin.php" method="post">
-                <input type="email" name="correo" placeholder="Correo" required>
-                <input type="password" name="contrasena" placeholder="Contraseña" required>
-                <button type="submit">Entrar</button>
-            </form>
-            <h3>¿No tienes cuenta aún?</h3>
-            <button onclick="location.href='registro.php'" type="button">Registrarse</button>
-        </div>
-   
-</body>
+    <h1>Iniciar sesión</h1>
+    <form id="loginForm" action="compruebaLogin.php" method="post">
+        <input type="email" name="correo" placeholder="Correo" required>
+        <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required>
+        <button type="submit">Entrar</button>
+    </form>
+    <h3>¿No tienes cuenta aún?</h3>
+    <button onclick="location.href='registro.php'" type="button">Registrarse</button>
+</div>
 
+<div class="tresd" id="tresdContainer"></div>
+
+<script>
+    let scriptLoaded = false;
+
+    function load3DScript() {
+        if (!scriptLoaded) {
+            scriptLoaded = true;
+            var script = document.createElement('script');
+            script.type = 'module';
+            script.src = 'https://unpkg.com/@splinetool/viewer@1.9.3/build/spline-viewer.js';
+            script.onload = function() {
+                var splineViewer = document.createElement('spline-viewer');
+                splineViewer.setAttribute('loading-anim-type', 'spinner-big-light');
+                splineViewer.setAttribute('url', 'https://prod.spline.design/heiNfcmdzfmGmbCt/scene.splinecode');
+                document.getElementById('tresdContainer').appendChild(splineViewer);
+            };
+            document.body.appendChild(script);
+        }
+    }
+
+    document.getElementById('contrasena').addEventListener('input', load3DScript);
+</script>
+</body>
 </html>

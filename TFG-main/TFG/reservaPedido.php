@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Mi página</title>
+    <title>Reserva</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <link rel="stylesheet" href="/TFG-MAIN/TFG/CSS/reservaPedido.css">
@@ -16,8 +16,10 @@
     include("./includes/header.php");
     ?>
     <?php
+
     if (isset($_SESSION['username'])) {
         echo '<h3 class="tituloReserva">Hora de hacer tu pedido</h3>';
+
         echo '<form action="/TFG-main/TFG/procesaPedido.php" method="post" class="formulario-pedido container mt-5">';
         echo '<div class="form-group">';
         echo '<label for="tipo" class="label-tipo">Tipo:</label><br>';
