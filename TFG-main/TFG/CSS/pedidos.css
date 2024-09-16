@@ -2,6 +2,113 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0 auto;
 }
+/* DIVS DEL PRINCIPIO */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Espacio entre los divs */
+    flex-wrap: nowrap; /* Para que estén en una sola línea */
+    height: 55vh; /* Para centrar verticalmente */
+}
+/*Pendientes*/
+.boxP {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 100px;
+    background-color: beige;
+    text-align: center;
+    text-decoration: none;
+    color: #8e64b8; 
+    margin: 10px;
+    box-shadow: #8e64b8 3px 4px 5px;
+    border: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.boxP:hover {
+    transform: scale(1.1);
+    box-shadow: #8e64b8 5px 6px 7px;
+    background-color: #f0e6ff;
+}
+
+/*Siendo Procesados*/
+.boxEP {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 100px;
+    background-color: beige;
+    text-align: center;
+    text-decoration: none;
+    color: #145fc8; 
+    margin: 10px;
+    box-shadow: #0c0e93 3px 4px 5px;
+    border: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.boxEP:hover {
+    transform: scale(1.1);
+    box-shadow: #0c0e93 5px 6px 7px;
+    background-color: #e6f0ff;
+}
+
+/*Terminados*/
+.boxT {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 100px;
+    background-color: beige;
+    text-align: center;
+    text-decoration: none;
+    color: #b0a420; 
+    margin: 10px;
+    box-shadow: #bca314 3px 4px 5px;
+    border: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.boxT:hover {
+    transform: scale(1.1);
+    box-shadow: #bca314 5px 6px 7px;
+    background-color: #fffbe6;
+}
+
+/*Pagados*/
+.boxPG {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 100px;
+    background-color: beige;
+    text-align: center;
+    text-decoration: none;
+    color: #55b000; 
+    margin: 10px;
+    box-shadow: #0b7718 3px 4px 5px;
+    border: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.boxPG:hover {
+    transform: scale(1.1);
+    box-shadow: #0b7718 5px 6px 7px;
+    background-color: #e6ffe6;
+}
+
+
+
+
+
+
+
 .allPedido {
     font-family: 'Roboto', sans-serif;
 }

@@ -22,16 +22,25 @@ session_start();
 </li>
                 <li>
                 <?php
-                if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 'Trabajador') {
-                    echo '<a href="/TFG-MAIN/TFG/trabajador/contabilidad.php">Contabilidad </a>';
-                    echo '<a href="/TFG-main/TFG/trabajador/usuarios.php">Usuarios </a>';
-                    echo '<a href="/TFG-MAIN/TFG/trabajador/pedidos.php">Pedidos</a>';
-                    echo '<a href="/TFG-MAIN/TFG/trabajador/productos.php">Productos</a>';
-                } else {
-                    echo '<a href="/TFG-MAIN/TFG/reservaPedido.php">  Reservar   </a>';
-                    echo '<a href="/TFG-MAIN/TFG/cesta.php"> Cesta   </a>';
-                }
-                ?>
+if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 'Trabajador') {
+    echo '<a href="/TFG-MAIN/TFG/trabajador/contabilidad.php">Contabilidad </a>';
+    echo '<a href="/TFG-main/TFG/trabajador/usuarios.php">Usuarios </a>';
+    echo '<div class="dropdown">';
+    echo '<a href="/TFG-MAIN/TFG/trabajador/pedidos.php">Pedidos</a>';
+    echo '<div class="dropdown-content">';
+    echo '<a href="/TFG-MAIN/TFG/trabajador/pedidos/pendientes.php">Pendientes</a>';
+    echo '<a href="/TFG-MAIN/TFG/trabajador/pedidos/proceso.php">Realizandose</a>';
+    echo '<a href="/TFG-MAIN/TFG/trabajador/pedidos/terminados.php">Realizados</a>';
+    echo '<a href="/TFG-MAIN/TFG/trabajador/pedidos/pagados.php">Pagados</a>';
+    echo '</div>';
+    echo '</div>';
+    echo '<a href="/TFG-MAIN/TFG/trabajador/productos.php">Productos</a>';
+} else {
+    echo '<a href="/TFG-MAIN/TFG/reservaPedido.php">  Reservar   </a>';
+    echo '<a href="/TFG-MAIN/TFG/cesta.php"> Cesta   </a>';
+}
+?>
+
             </li>
             </ul>
         </nav>
