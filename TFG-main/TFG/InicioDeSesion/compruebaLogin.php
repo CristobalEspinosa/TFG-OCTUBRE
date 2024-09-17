@@ -5,7 +5,12 @@ require_once ("../db/bd.inc.php");
 $correo = $_POST['correo'];
 $contrasena = $_POST['contrasena'];
 
-$user = compruebaUsuario($correo, $contrasena);
+// Hash de la contraseña ingresada usando SHA-256
+$hashed_password = hash('sha256', $contrasena);
+
+// Verificar el usuario en la base de datos
+$user = compruebaUsuario($correo, $hashed_password);
+
 if ($user) {
     $_SESSION['hola'] = true;
     $_SESSION['idUsuario'] = $user['idUsuario'];
@@ -19,8 +24,8 @@ if ($user) {
         if (ultimoPedidoPagado($idUsuario)) {
             $fecha = date('Y-m-d'); 
             $hora = date('H:i:s');
-            $precioPedido=0;
-            $idPedido = creaPedido($idUsuario, $fecha, $hora,$precioPedido);
+            $precioPedido = 0;
+            $idPedido = creaPedido($idUsuario, $fecha, $hora, $precioPedido);
             $_SESSION['idPedido'] = $idPedido;
         }
     }
@@ -31,3 +36,4 @@ if ($user) {
     window.location.href = '/TFG-main/TFG/InicioDeSesion/inicioSesion.php';</script>";
 }
 ?>
+

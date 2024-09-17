@@ -8,7 +8,9 @@ $correo = $_POST['correo'];
 $password = $_POST['password'];
 
 
-registrarse($nombre, $apellidos, $correo, $password, $tipo);
+$hashed_password = hash('sha256', $password);
+
+registrarse($nombre, $apellidos, $correo, $hashed_password, $tipo);
 echo "<script type='text/javascript'>alert('Usuario registrado correctamente.');
 window.location.href = '/TFG-main/TFG/InicioDeSesion/inicioSesion.php';</script>";
 ?>

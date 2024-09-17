@@ -18,8 +18,9 @@
 -Cambiar el diseño de pedidos.php, hacer 3 cuadrados/columnas en los que dividir los pedidos segun su estado  HECHOOOO
 -Añadir 392845798739 tipos de categorias para hacer un formulario dinamico y conectado a la bbdd  NO LOGRADO
 -Controlar precios con variables en vez de con campos en la bbdd   NO LOGRADO
--Intentar meter hash para las contraseñas
+-Intentar meter hash para las contraseñas      HECHOOOO
 -Meter una grafica para la contabilidad      HECHOOOO
+-Enlazar la tabla pedido con la tabla totales, mediante un campo en pedidos que es una fk a idTotales
 -TPV      NO LOGRADO
   
 
