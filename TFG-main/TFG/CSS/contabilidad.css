@@ -17,8 +17,9 @@
     border-radius: 5px;
     margin: 10px;
     padding: 20px;
-    width: calc(100% / 3 - 40px);
+    width: calc(100% / 3 - 20px);
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .mes {
@@ -27,5 +28,32 @@
 }
 
 .detalle {
+    display: none;
     color: #666;
+    margin:5px 0;
+}
+
+.contenedor {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 20px;
+}
+
+.meses {
+    flex: 2;
+    min-width: 300px;
+    margin-left: 100px;
+}
+
+.grafica {
+    flex: 1;
+    width: 800px;
+    height: 500px;
+    margin-left: 20px;
+    margin-right: 100px;
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
 }

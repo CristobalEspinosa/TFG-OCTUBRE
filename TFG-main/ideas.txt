@@ -16,9 +16,10 @@
 -Enviar un email cuando el pedido este realizado   NECESITA UN SERVIDOR SMTP Y NO SE PUEDE HACER, PERO ESTÁ DEFINIDO
 -Añadir que en las paginas 3d no haga falta que se cargen las imagenes 3d para poder seguir      HECHOOOO
 -Cambiar el diseño de pedidos.php, hacer 3 cuadrados/columnas en los que dividir los pedidos segun su estado  HECHOOOO
--Añadir 392845798739 tipos de categorias para hacer un formulario dinamico y conectado a la bbdd  
--Controlar precios con variables en vez de con campos en la bbdd
+-Añadir 392845798739 tipos de categorias para hacer un formulario dinamico y conectado a la bbdd  NO LOGRADO
+-Controlar precios con variables en vez de con campos en la bbdd   NO LOGRADO
 -Intentar meter hash para las contraseñas
--TPV
-
+-Meter una grafica para la contabilidad      HECHOOOO
+-TPV      NO LOGRADO
+  
 
