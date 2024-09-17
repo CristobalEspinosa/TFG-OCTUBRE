@@ -77,7 +77,10 @@ include '../db/bd.inc.php';
         }
     </script>
 </body>
-<?php 
+<footer>
+
+    <?php 
 include ("../includes/footer.php");
 ?>
+</footer>
 </html>

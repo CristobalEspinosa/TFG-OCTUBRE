@@ -2,6 +2,7 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0 auto;
 }
+
 /* DIVS DEL PRINCIPIO */
 .container {
     display: flex;
@@ -11,8 +12,9 @@ body {
     flex-wrap: nowrap; /* Para que estén en una sola línea */
     height: 55vh; /* Para centrar verticalmente */
 }
+
 /*Pendientes*/
-.boxP {
+.boxP, .boxEP, .boxT, .boxPG {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,97 +23,31 @@ body {
     background-color: beige;
     text-align: center;
     text-decoration: none;
-    color: #8e64b8; 
     margin: 10px;
-    box-shadow: #8e64b8 3px 4px 5px;
+    box-shadow: 3px 4px 5px;
     border: none;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.boxP:hover {
+.boxP:hover, .boxEP:hover, .boxT:hover, .boxPG:hover {
     transform: scale(1.1);
-    box-shadow: #8e64b8 5px 6px 7px;
-    background-color: #f0e6ff;
+    box-shadow: 5px 6px 7px;
 }
 
-/*Siendo Procesados*/
-.boxEP {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 250px;
-    height: 100px;
-    background-color: beige;
-    text-align: center;
-    text-decoration: none;
-    color: #145fc8; 
-    margin: 10px;
-    box-shadow: #0c0e93 3px 4px 5px;
-    border: none;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
+.boxP { color: #8e64b8; }
+.boxEP { color: #145fc8; }
+.boxT { color: #b0a420; }
+.boxPG { color: #55b000; }
 
-.boxEP:hover {
-    transform: scale(1.1);
-    box-shadow: #0c0e93 5px 6px 7px;
-    background-color: #e6f0ff;
-}
-
-/*Terminados*/
-.boxT {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 250px;
-    height: 100px;
-    background-color: beige;
-    text-align: center;
-    text-decoration: none;
-    color: #b0a420; 
-    margin: 10px;
-    box-shadow: #bca314 3px 4px 5px;
-    border: none;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.boxT:hover {
-    transform: scale(1.1);
-    box-shadow: #bca314 5px 6px 7px;
-    background-color: #fffbe6;
-}
-
-/*Pagados*/
-.boxPG {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 250px;
-    height: 100px;
-    background-color: beige;
-    text-align: center;
-    text-decoration: none;
-    color: #55b000; 
-    margin: 10px;
-    box-shadow: #0b7718 3px 4px 5px;
-    border: none;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.boxPG:hover {
-    transform: scale(1.1);
-    box-shadow: #0b7718 5px 6px 7px;
-    background-color: #e6ffe6;
-}
-
-
-
-
-
-
+.boxP:hover { background-color: #f0e6ff; }
+.boxEP:hover { background-color: #e6f0ff; }
+.boxT:hover { background-color: #fffbe6; }
+.boxPG:hover { background-color: #e6ffe6; }
 
 .allPedido {
     font-family: 'Roboto', sans-serif;
 }
+
 .contenedor-principal {
     width: 98%;
     gap: 10px;
@@ -122,27 +58,17 @@ body {
     flex-wrap: wrap; /* Permite que las tarjetas se ajusten en varias filas */
 }
 
-.izquierda {
+.izquierda, .derecha {
     float: left; 
     border: solid 2px #8e64b8;
     padding: 10px;
     overflow-y: auto; 
-    width: 55%; /* Ajusta el ancho relativo */
     height: 100%;
     box-shadow: 10px 10px 20px #333;
 }
 
-.derecha {
-    float: left;
-    border: solid 2px #8e64b8;
-    padding: 10px;
-    overflow-y: auto;
-    width: 41.8%; 
-    height: 100%;
-    box-shadow: 10px 10px 20px #333;
-    display: flex;
-    flex-direction: column; 
-}
+.izquierda { width: 55%; }
+.derecha { width: 41.8%; display: flex; flex-direction: column; }
 
 .abajo {
     overflow-y: auto;
@@ -157,10 +83,10 @@ body {
     box-shadow: 10px 10px 20px #333;
 }
 
-.dentroCards{
+.dentroCards {
     font-family: 'Roboto', sans-serif;
     text-align: center;
-    color:#a8329b;
+    color: #a8329b;
 }
 
 .card {
@@ -170,42 +96,37 @@ body {
     background-color: beige;
     color: #8e64b8;
     box-shadow: 10px 10px 20px #333;
-    width: 325px; /* Ancho estático */
-    height: calc(100vh / 6); /* Altura calculada */
     margin: 10px; /* Espacio entre las tarjetas */
     float: left;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: all 0.3s ease; /* Transición suave */
 }
-
 
 .card:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     transform: scale(1.03);
-    animation: rotating-border 2s linear infinite;
-    border:#a8329b 4px solid;
 }
 
 .pedido {
     font-weight: bold;
     margin-bottom: 5px;
+    cursor: pointer;
 }
 
 .linea {
     margin-left: 10px;
     background-color: bisque;
 }
-h1{
+
+h1 {
     text-align: center;
 }
-@keyframes rotating-border {
-    0% { border-color: #8e64b8; }
-    25% { border-color: #9b4ba9; }
-    50% { border-color: #a8329b; }
-    75% { border-color: #b4198d; }
-    100% { border-color: #8e64b8; }
-}
+
+
+
+
 .botones {
     position: absolute;
     bottom: 0;
@@ -241,25 +162,16 @@ h1{
     background-color: #a8329b;
 }
 
-.card:hover .botones {
-    transform: translateY(0);
-}
-.realizado {
-    background-color: rgb(213, 207, 28);
+.realizado, .pagado, .siendoRealizado {
     color: white;
     padding: 10px;
     margin-top: 10px;
 }
 
-.pagado {
-    background-color: rgb(22, 102, 22);
-    color: white;
-    padding: 10px;
-    margin-top: 10px;
-}
-.siendoRealizado {
-    background-color: rgb(49, 78, 205);
-    color: white;
-    padding: 10px;
-    margin-top: 10px;
+.realizado { background-color: rgb(213, 207, 28); }
+.pagado { background-color: rgb(22, 102, 22); }
+.siendoRealizado { background-color: rgb(49, 78, 205); }
+
+.detalles {
+    display: none;
 }

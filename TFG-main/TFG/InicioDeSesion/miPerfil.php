@@ -54,7 +54,31 @@
                 <button type="button" class="btn btn-warning editar" data-bs-toggle="modal" data-bs-target="#editModal" data-id="<?php echo $_SESSION['idUsuario']; ?>">
                     Editar cuenta
                 </button>
+                <a href="salir.php" class="btn btn-primary">
+        Cerrar sesión
+    </a>
+<p>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p>
             </div>
         </div>
 
@@ -113,10 +137,11 @@
             </div>
         </div>
     </div>
-
+<div class="foooter">
     <?php
     include("../includes/footer.php");
     ?>
+    </div>
     <script>
    $(document).ready(function() {
     $('.editar').click(function() {

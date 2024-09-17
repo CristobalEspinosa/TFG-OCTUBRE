@@ -211,7 +211,9 @@ $('#confirmEdit').click(function() {
 
 </script>
 
+<div class="foooter">
+    <?php
+    include("../includes/footer.php");
+    ?>
+    </div>
 
-<?php
-include("../includes/footer.php");
-?>
