@@ -1,5 +1,5 @@
 <?php
-require_once ("../db/bd.inc.php");
+require_once("../db/bd.inc.php");
 ?>
 
 <link rel="stylesheet" href="/TFG-main/TFG/CSS/inicioSesion.css">
@@ -31,9 +31,9 @@ require_once ("../db/bd.inc.php");
 </form>
 
 <script>
-function validarContrasena() {
+ function validarContrasena() {
     var contrasena = document.getElementById("password").value;
-    var regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+    var regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%#?&]).{8,}$/;
 
     if (regex.test(contrasena)) {
         return true;
@@ -42,23 +42,26 @@ function validarContrasena() {
         return false;
     }
 }
-function validarCorreo() {
-    var correo = document.getElementById("correo").value;
-    var regex = /^[\w-]+(\.[\w-]+)*@((alu\.murciaeduca\.es)|(murciaeduca\.es))$/;
 
-    if (regex.test(correo)) {
-        return true;
-    } else {
-        alert("Utiliza tu correo murciaeduca porfavor.");
-        return false;
+
+    function validarCorreo() {
+        var correo = document.getElementById("correo").value;
+        var regex = /^[\w-]+(\.[\w-]+)*@((alu\.murciaeduca\.es)|(murciaeduca\.es))$/;
+
+        if (regex.test(correo)) {
+            return true;
+        } else {
+            alert("Utiliza tu correo murciaeduca por favor.");
+            return false;
+        }
     }
-}
-function mostrarContrasena() {
-    var x = document.getElementById("password");
-    if (x.type === "password") {
-        x.type = "text";
-    } else {
-        x.type = "password";
+
+    function mostrarContrasena() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
     }
-}
 </script>

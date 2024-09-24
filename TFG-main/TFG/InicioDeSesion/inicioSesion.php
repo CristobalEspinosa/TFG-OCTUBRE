@@ -18,6 +18,7 @@
     <form id="loginForm" action="compruebaLogin.php" method="post">
         <input type="email" name="correo" placeholder="Correo" required>
         <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required>
+        <p>P@ssw0rd1</p>
         <button type="submit">Entrar</button>
     </form>
     <h3>¿No tienes cuenta aún?</h3>

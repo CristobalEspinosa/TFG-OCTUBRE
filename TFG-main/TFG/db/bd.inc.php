@@ -98,12 +98,12 @@ function marcarComoPagado($idPedido) {
     $sql->bindParam(':idPedido', $idPedido);
     $sql->execute();
 
-    // Obtener el mes actual
-    $fecha = new DateTime();
-    $mes = $fecha->format('Y-m');
-
-    // Actualizar los totales
-    actualizarTotales($mes, $precio, 1);
+        // Obtener el primer día del mes actual
+        $fecha = new DateTime();
+        $mes = $fecha->format('Y-m-01');
+    
+        // Actualizar los totales
+        actualizarTotales($precio, 1);
 }
 
 function eliminarPedido($idPedido) {
@@ -375,7 +375,7 @@ function obtenerTotalesPorMes() {
     $conexion = conectar();
 
     // Preparar la consulta SQL
-    $sql = $conexion->prepare("SELECT mes, SUM(totalVentas) as totalVentas, SUM(numPedidos) as numPedidos FROM totales GROUP BY mes");
+    $sql = $conexion->prepare("SELECT mes, totalVentas, numPedidos FROM totales");
 
     // Ejecutar la consulta
     $sql->execute();
@@ -396,27 +396,36 @@ function obtenerTotalesPorMes() {
     return $totalesPorMes;
 }
 
-function actualizarTotales($mes, $totalVentas, $numPedidos) {
+
+function actualizarTotales($totalVentas, $numPedidos) {
     $conexion = conectar();
+    
+    // Obtener el primer día del mes actual
+    $fecha = new DateTime();
+    $mes = $fecha->format('Y-m-01');
+    
+    // Verificar si ya existe un registro para el mes actual
     $sql = $conexion->prepare("SELECT * FROM totales WHERE mes = :mes");
     $sql->bindValue(':mes', $mes);
     $sql->execute();
     $resultado = $sql->fetch(PDO::FETCH_ASSOC);
+    
     if ($resultado) {
+        // Si existe un registro para el mes, actualizarlo
         $sql = $conexion->prepare("UPDATE totales SET totalVentas = totalVentas + :totalVentas, numPedidos = numPedidos + :numPedidos WHERE mes = :mes");
     } else {
-        // Si no existe un total para este mes, insertar uno nuevo
-        // Obtener el primer día del mes actual
-        $fecha = new DateTime();
-        $mes = $fecha->format('Y-m-01');
-
+        // Si no existe un registro para el mes, insertar uno nuevo
         $sql = $conexion->prepare("INSERT INTO totales (mes, totalVentas, numPedidos) VALUES (:mes, :totalVentas, :numPedidos)");
     }
+    
     $sql->bindValue(':mes', $mes);
-    $sql->bindValue(':totalVentas', $totalVentas);
-    $sql->bindValue(':numPedidos', $numPedidos);
+    $sql->bindValue(':totalVentas', $totalVentas, PDO::PARAM_STR);
+    $sql->bindValue(':numPedidos', $numPedidos, PDO::PARAM_INT);
     $sql->execute();
 }
+
+
+
 
 // eliminar y actualizar cantidad  linea-pedido
 function eliminarLinea($idPedidoLinea) {

@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/TFG-MAIN/TFG/CSS/pedidos.css">
+
 <?php
 include("../../includes/header.php");
 include '../../db/bd.inc.php';
@@ -67,7 +68,7 @@ foreach ($pedidos as $idPedido) {
             echo "<a href='?quitar-realizacion=$idPedido' class='boton'>Quitar Realización</a>";
             echo "<a href='?realizado=$idPedido' class='boton'>Terminado</a>";
         } else {
-            echo "<a href='?realizado=$idPedido' class='boton'>Terminado</a>";
+            echo "<a href='?realizado=$idPedido' class='btn btn-danger'>Terminado</a>";
             echo "<a href='?realizado2=$idPedido' class='boton'>Realizar</a>";
         }
     }
