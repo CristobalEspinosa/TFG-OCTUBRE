@@ -16,11 +16,16 @@
 -Enviar un email cuando el pedido este realizado   NECESITA UN SERVIDOR SMTP Y NO SE PUEDE HACER, PERO ESTÁ DEFINIDO
 -Añadir que en las paginas 3d no haga falta que se cargen las imagenes 3d para poder seguir      HECHOOOO
 -Cambiar el diseño de pedidos.php, hacer 3 cuadrados/columnas en los que dividir los pedidos segun su estado  HECHOOOO
--Añadir 392845798739 tipos de categorias para hacer un formulario dinamico y conectado a la bbdd  NO LOGRADO
--Controlar precios con variables en vez de con campos en la bbdd   NO LOGRADO
 -Intentar meter hash para las contraseñas      HECHOOOO
 -Meter una grafica para la contabilidad      HECHOOOO
--Enlazar la tabla pedido con la tabla totales, mediante un campo en pedidos que es una fk a idTotales
+-Enlazar la tabla pedido con la tabla totales, mediante un campo en pedidos que es una fk a idTotales  HECHOOOO
+-Cambiar los colores de los botones del  hover de los pedidos y poner en cada pestaña el boton indicado    HECHOOOO
 -TPV      NO LOGRADO
+-Añadir 392845798739 tipos de categorias para hacer un formulario dinamico y conectado a la bbdd  NO LOGRADO
+-Controlar precios con variables en vez de con campos en la bbdd   NO LOGRADO
+
+IDEA si hay tiempo:
+sistema de puntos, cada articulo tiene unos puntos, cuando haces un pedido se guarda en tu usuario el total de puntos que tienes,
+y cuando tienes x puntos se hacen regalos
   
 

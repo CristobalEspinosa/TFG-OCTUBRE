@@ -4,6 +4,15 @@
 include("../../includes/header.php");
 include '../../db/bd.inc.php';
 
+echo '<div class="contenedor">';
+
+// Menú de navegación vertical
+echo '<div class="menu-vertical">';
+echo '<a href="/TFG-MAIN/TFG/trabajador/pedidos/pendientes.php" class="boxP">Pendientes</a>';
+echo '<a href="/TFG-MAIN/TFG/trabajador/pedidos/proceso.php" class="boxEP">En Proceso</a>';
+echo '<a href="/TFG-MAIN/TFG/trabajador/pedidos/terminados.php" class="boxT">Terminados</a>';
+echo '<a href="/TFG-MAIN/TFG/trabajador/pedidos/pagados.php" class="boxPG">Pagados</a>';
+echo '</div>';
 
 // Comprobar si se ha hecho clic en los botones y actualizar el estado correspondiente
 if (isset($_GET['realizado'])) {
@@ -61,23 +70,8 @@ foreach ($pedidos as $idPedido) {
     }
     //botones
     echo "<div class='botones'>";
-    if ($detallesPedido['realizado'] == 1) {
-        echo "<a href='?no-realizado=$idPedido' class='boton'>No Terminado</a>";
-    } else {
-        if ($detallesPedido['siendoRealizado'] == 1) {
-            echo "<a href='?quitar-realizacion=$idPedido' class='boton'>Quitar Realización</a>";
-            echo "<a href='?realizado=$idPedido' class='boton'>Terminado</a>";
-        } else {
-            echo "<a href='?realizado=$idPedido' class='btn btn-danger'>Terminado</a>";
-            echo "<a href='?realizado2=$idPedido' class='boton'>Realizar</a>";
-        }
-    }
-    if ($detallesPedido['pagado'] == 1) {
-        echo "<a href='?no-pagado=$idPedido' class='boton'>No Pagado</a>";
-    } else {
-        echo "<a href='?pagado=$idPedido' class='boton'>Pagado</a>";
-    }
-    echo "<a href='?eliminar=$idPedido' class='boton'>Eliminar</a>";
+    echo "<a href='?realizado2=$idPedido' class='botonR'>Realizar</a>";
+    echo "<a href='?eliminar=$idPedido' class='botonE'>Eliminar</a>";
     echo "</div>";
     echo "<div id='estado-$idPedido'></div>";
     // Obtenemos el precio total del pedido desde el campo precioPedido
@@ -94,19 +88,18 @@ foreach ($pedidos as $idPedido) {
     echo "</div>"; // Cierre de allPedido
 }
 echo "</div>";
-echo "</div>";
+echo "</div>"; 
+echo "</div>"; 
+include("../../includes/footer.php");
 
-
-
-    include("../../includes/footer.php");
 ?>
 <script>
-function toggleDetalles(idPedido) {
-    var detalles = document.getElementById('detalles-' + idPedido);
-    if (detalles.style.display === 'none') {
-        detalles.style.display = 'block';
-    } else {
-        detalles.style.display = 'none';
+    function toggleDetalles(idPedido) {
+        var detalles = document.getElementById('detalles-' + idPedido);
+        if (detalles.style.display === 'none') {
+            detalles.style.display = 'block';
+        } else {
+            detalles.style.display = 'none';
+        }
     }
-}
 </script>

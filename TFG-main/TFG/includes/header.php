@@ -21,7 +21,7 @@ session_start();
     </ul>
 </li>
                 <li>
-                <?php
+<?php
 if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 'Trabajador') {
     echo '<a href="/TFG-MAIN/TFG/trabajador/contabilidad.php">Contabilidad </a>';
     echo '<a href="/TFG-main/TFG/trabajador/usuarios.php">Usuarios </a>';
@@ -30,7 +30,7 @@ if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 'Trabajador') {
     echo '<div class="dropdown-content">';
     echo '<a href="/TFG-MAIN/TFG/trabajador/pedidos/pendientes.php">Pendientes</a>';
     echo '<a href="/TFG-MAIN/TFG/trabajador/pedidos/proceso.php">Realizandose</a>';
-    echo '<a href="/TFG-MAIN/TFG/trabajador/pedidos/terminados.php">Realizados</a>';
+    echo '<a href="/TFG-MAIN/TFG/trabajador/pedidos/terminados.php">Terminados</a>';
     echo '<a href="/TFG-MAIN/TFG/trabajador/pedidos/pagados.php">Pagados</a>';
     echo '</div>';
     echo '</div>';

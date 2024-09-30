@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-08-2024 a las 16:17:22
+-- Tiempo de generación: 30-09-2024 a las 13:25:12
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -41,33 +41,33 @@ CREATE TABLE `articulo` (
 --
 
 INSERT INTO `articulo` (`idArticulo`, `articulo`, `pvp`, `stock`, `idProveedor`, `idCategoria`) VALUES
-(1, 'Café Solo', 1.1, 23, 4, 2),
-(2, 'Café Manchado', 1.1, 50, 4, 2),
+(1, 'Café Solo', 1, 23, 4, 2),
+(2, 'Café Manchado', 1.1, 49, 4, 2),
 (3, 'Café Cortado', 1.1, 50, 4, 2),
 (4, 'Infusión Manzanilla', 1, 50, 4, 10),
 (5, 'Infusión Poleo', 1.1, 50, 4, 10),
 (6, 'Infusión Poleo-Menta', 1.1, 50, 4, 10),
 (7, 'Té', 1.1, 47, 4, 10),
-(8, 'Medio Bocadillo Tortilla', 1, 34, 1, 9),
+(8, 'Medio Bocadillo Tortilla', 0.8, 34, 1, 9),
 (9, 'Medio Bocadillo Atún', 0.8, 33, 1, 9),
-(10, 'Medio Bocadillo Jamón Serrano', 0.8, 37, 1, 9),
+(10, 'Medio Bocadillo Jamón Serrano', 0.8, 34, 1, 9),
 (11, 'Medio Bocadillo Jamón Cocido', 0.8, 46, 1, 9),
 (12, 'Medio Bocadillo Queso Fresco', 0.8, 65, 1, 9),
 (13, 'Entero Bocadillo Tortilla', 1.5, 31, 1, 1),
-(14, 'Entero Bocadillo Atún', 1.5, 19, 1, 1),
+(14, 'Entero Bocadillo Atún', 1.5, 18, 1, 1),
 (15, 'Entero Bocadillo Jamón Serrano', 1.5, 33, 1, 1),
 (16, 'Entero Bocadillo Jamón Cocido', 1.5, 46, 1, 1),
 (17, 'Entero Bocadillo Queso Fresco', 1.5, 65, 1, 1),
 (22, 'Tostada Aceite', 1.5, 12, 1, 4),
 (23, 'Tostada Atún', 1.5, 23, 1, 4),
-(24, 'Tostada Tomate', 1.5, 13, 1, 4),
+(24, 'Tostada Tomate', 1.5, 11, 1, 4),
 (26, 'Pizza Jamón', 1, 15, 5, 3),
 (27, 'Pizza Atún', 1, 25, 5, 3),
 (30, 'Empanadilla Jamón', 0.7, 17, 1, 8),
 (31, 'Empanadilla Atún', 0.7, 23, 1, 8),
 (32, 'Chicle Melón', 0.1, 45, 3, 5),
-(33, 'Chicle Limón', 0.1, 65, 3, 5),
-(34, 'Chicle Sandía', 0.1, 56, 3, 5),
+(33, 'Chicle Limón', 0.1, 64, 3, 5),
+(34, 'Chicle Sandía', 0.1, 55, 3, 5),
 (35, 'Chicle Menta', 0.1, 59, 3, 5),
 (36, 'Caramelo', 0.1, 63, 3, 5),
 (37, 'Bolsa Patatas Fritas', 0.35, 13, 2, 7),
@@ -80,7 +80,8 @@ INSERT INTO `articulo` (`idArticulo`, `articulo`, `pvp`, `stock`, `idProveedor`,
 (44, 'Nestea', 1.2, 46, 2, 6),
 (45, 'Aquarius', 1.2, 34, 2, 6),
 (46, 'Agua', 1.2, 100, 2, 6),
-(47, 'Tostada Aguacate', 1.5, 17, 1, 4);
+(47, 'Tostada Aguacate', 1.5, 17, 1, 4),
+(48, 'Chicle Fresa', 0.1, 45, 3, 5);
 
 -- --------------------------------------------------------
 
@@ -134,9 +135,13 @@ CREATE TABLE `pedido` (
 
 INSERT INTO `pedido` (`idPedido`, `idUsuario`, `fecha`, `hora`, `pagado`, `realizado`, `precioPedido`, `finalizado`, `horaRecogida`, `siendoRealizado`) VALUES
 (57, 4, '2024-07-10', '17:17:21', 0, 0, 3.60, 1, 'RECREO', 0),
-(58, 11, '2024-08-05', '19:46:22', 0, 0, 2.40, 1, '2ªHORA', 1),
-(59, 4, '2024-08-22', '22:36:14', 0, 1, 7.50, 1, '1ªHORA', 0),
-(60, 11, '2024-08-26', '12:33:26', 1, 0, 2.00, 1, '2ªHORA', 0);
+(58, 11, '2024-08-05', '19:46:22', 0, 1, 2.40, 1, '2ªHORA', 0),
+(60, 11, '2024-08-26', '12:33:26', 1, 0, 2.00, 1, '2ªHORA', 0),
+(61, 11, '2024-09-16', '12:05:06', 0, 0, 0.00, NULL, NULL, NULL),
+(62, 4, '2024-09-17', '02:07:30', 0, 0, 2.60, 1, '2ªHORA', 1),
+(63, 36, '2024-09-18', '00:28:33', 0, 0, 0.00, NULL, NULL, NULL),
+(66, 4, '2024-09-25', '13:17:08', 0, 0, 0.00, NULL, NULL, NULL),
+(67, 4, '2024-09-30', '12:01:51', 0, 0, 0.20, 1, '1ªHORA', 0);
 
 -- --------------------------------------------------------
 
@@ -160,8 +165,11 @@ CREATE TABLE `pedido-linea` (
 INSERT INTO `pedido-linea` (`idPedidoLinea`, `idArticulo`, `cantidad`, `idPedido`, `extra`, `precioLinea`) VALUES
 (64, 43, 3, 57, NULL, 3.60),
 (65, 42, 2, 58, NULL, 2.40),
-(66, 14, 5, 59, 'Tomate', 7.50),
-(67, 26, 2, 60, NULL, 2.00);
+(67, 26, 2, 60, NULL, 2.00),
+(68, 24, 1, 62, NULL, 1.50),
+(69, 2, 1, 62, NULL, 1.10),
+(72, 34, 1, 67, NULL, 0.10),
+(73, 33, 1, 67, NULL, 0.10);
 
 -- --------------------------------------------------------
 
@@ -203,34 +211,10 @@ CREATE TABLE `totales` (
 --
 
 INSERT INTO `totales` (`mes`, `numPedidos`, `totalVentas`, `idBeneficios`) VALUES
-('2024-06-01', 1, 13.00, 2),
-('2024-06-01', 1, 5.50, 3),
-('2024-06-01', 1, 3.00, 4),
-('2024-06-01', 1, 3.00, 5),
-('2024-06-01', 1, 2.00, 6),
-('2024-06-01', 1, 7.80, 7),
-('2024-06-01', 1, 2.70, 8),
-('2024-06-01', 1, 3.20, 9),
-('2024-06-01', 1, 6.90, 10),
-('2024-06-01', 1, 6.90, 11),
-('2024-06-01', 1, 0.00, 12),
-('2024-06-01', 1, 1.60, 13),
-('2024-06-01', 1, 4.50, 14),
-('2024-07-01', 1, 4.50, 15),
-('2024-07-01', 1, 4.50, 16),
-('2024-07-01', 1, 4.50, 17),
-('2024-07-01', 1, 4.50, 18),
-('2024-08-01', 1, 2.40, 19),
-('2024-08-01', 1, 2.40, 20),
-('2024-08-01', 1, 2.40, 21),
-('2024-08-01', 1, 2.40, 22),
-('2024-08-01', 1, 2.40, 23),
-('2024-08-01', 1, 2.40, 24),
-('2024-08-01', 1, 2.40, 25),
-('2024-08-01', 1, 2.40, 26),
-('2024-08-01', 1, 2.40, 27),
-('2024-08-01', 1, 3.60, 28),
-('2024-08-01', 1, 2.00, 29);
+('2024-06-01', 13, 60.10, 2),
+('2024-07-01', 4, 18.00, 3),
+('2024-08-01', 11, 27.20, 4),
+('2024-09-01', 19, 48.63, 5);
 
 -- --------------------------------------------------------
 
@@ -243,7 +227,7 @@ CREATE TABLE `usuario` (
   `nombre` varchar(200) NOT NULL,
   `apellidos` varchar(200) NOT NULL,
   `correo` varchar(200) NOT NULL,
-  `contrasena` varchar(10) NOT NULL,
+  `contrasena` varchar(64) NOT NULL,
   `tipo` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -252,9 +236,10 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idUsuario`, `nombre`, `apellidos`, `correo`, `contrasena`, `tipo`) VALUES
-(4, 'Alumno', 'Alumno', 'a@a.com', '1234', 'Alumno'),
-(5, 'Trabajador', 'Trabajador', 't@t.com', '1234', 'Trabajador'),
-(11, 'Profesor', 'Profesor', 'p@p.com', '1234', 'Profesor');
+(4, 'Alumno', 'Alumno', 'a@a.com', 'f7745f4df4394027716de160fb2acd6aac36699576a8be586b75ac09acf6a0df', 'Alumno'),
+(5, 'Trabajador', 'Trabajador', 't@t.com', 'f7745f4df4394027716de160fb2acd6aac36699576a8be586b75ac09acf6a0df', 'Trabajador'),
+(11, 'Profesor', 'Profesor', 'p@p.com', 'f7745f4df4394027716de160fb2acd6aac36699576a8be586b75ac09acf6a0df', 'Profesor'),
+(36, 'Ejemplo', 'Ejemplo', 'Ej@alu.murciaeduca.es', '', 'Alumno');
 
 --
 -- Índices para tablas volcadas
@@ -316,7 +301,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `articulo`
 --
 ALTER TABLE `articulo`
-  MODIFY `idArticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `idArticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -328,25 +313,25 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `idPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `idPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT de la tabla `pedido-linea`
 --
 ALTER TABLE `pedido-linea`
-  MODIFY `idPedidoLinea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `idPedidoLinea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT de la tabla `totales`
 --
 ALTER TABLE `totales`
-  MODIFY `idBeneficios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `idBeneficios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- Restricciones para tablas volcadas

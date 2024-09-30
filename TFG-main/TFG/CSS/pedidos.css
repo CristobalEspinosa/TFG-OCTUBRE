@@ -147,9 +147,9 @@ h1 {
     visibility: visible;  
 }
 
-.boton {
+.botonR {
     color: #fff;
-    background-color: #8e64b8;
+    background-color: rgb(49, 78, 205);
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
@@ -157,7 +157,36 @@ h1 {
     transition: background-color 0.3s ease;
     text-decoration: none;
 }
-
+.botonE {
+    color: #fff;
+    background-color: rgb(254, 0, 0);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+.botonT {
+    color: #fff;
+    background-color: rgb(213, 207, 28);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+.botonP {
+    color: #fff;
+    background-color: rgb(22, 102, 22);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
 .boton:hover {
     background-color: #a8329b;
 }
@@ -175,3 +204,25 @@ h1 {
 .detalles {
     display: none;
 }
+
+/* menu vertical */
+.contenedor {
+    display: flex;
+}
+
+.menu-vertical {
+    width: 200px;
+    padding: 10px;
+}
+
+.contenedor-principal {
+    flex-grow: 1;
+    padding: 10px;
+}
+
+.menu-vertical a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
