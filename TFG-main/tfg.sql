@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-09-2024 a las 13:25:12
+-- Tiempo de generación: 02-10-2024 a las 10:52:19
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -141,7 +141,7 @@ INSERT INTO `pedido` (`idPedido`, `idUsuario`, `fecha`, `hora`, `pagado`, `reali
 (62, 4, '2024-09-17', '02:07:30', 0, 0, 2.60, 1, '2ªHORA', 1),
 (63, 36, '2024-09-18', '00:28:33', 0, 0, 0.00, NULL, NULL, NULL),
 (66, 4, '2024-09-25', '13:17:08', 0, 0, 0.00, NULL, NULL, NULL),
-(67, 4, '2024-09-30', '12:01:51', 0, 0, 0.20, 1, '1ªHORA', 0);
+(67, 4, '2024-09-30', '12:01:51', 1, 0, 0.20, 1, '1ªHORA', 0);
 
 -- --------------------------------------------------------
 
@@ -214,7 +214,8 @@ INSERT INTO `totales` (`mes`, `numPedidos`, `totalVentas`, `idBeneficios`) VALUE
 ('2024-06-01', 13, 60.10, 2),
 ('2024-07-01', 4, 18.00, 3),
 ('2024-08-01', 11, 27.20, 4),
-('2024-09-01', 19, 48.63, 5);
+('2024-09-01', 19, 48.63, 5),
+('2024-10-01', 1, 0.20, 35);
 
 -- --------------------------------------------------------
 
@@ -325,7 +326,7 @@ ALTER TABLE `pedido-linea`
 -- AUTO_INCREMENT de la tabla `totales`
 --
 ALTER TABLE `totales`
-  MODIFY `idBeneficios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `idBeneficios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
