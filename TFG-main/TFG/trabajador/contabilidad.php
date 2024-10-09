@@ -7,8 +7,9 @@ include '../db/bd.inc.php';
 <body>
 <h1 class="titulo">Resumen de Ventas</h1>
     <div class="contenedor">
-    <div class="meses">
-        <h1>Meses</h1>
+        <div class="meses">
+        <h1>Meses:</h1>
+ 
         <?php
         $totalesPorMes = obtenerTotalesPorMes();
 

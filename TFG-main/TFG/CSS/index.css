@@ -5,8 +5,6 @@ body {
     margin: 0 auto;
 }
 
-
-
 /*Imagen de fondo con letras*/
 .cantina-image {
     position: relative;
@@ -14,7 +12,7 @@ body {
     margin-top: 20px;
     transition: color 0.3s ease; 
 }
-.cantina-image img:hover{
+.cantina-image img:hover {
     box-shadow: 30px 30px 50px #c7a9e6;
     border: 0px;
 }
@@ -32,8 +30,43 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 4vw;
-    color:#20211d; 
+    font-size: 2vw; /* Ajustado para que sea más legible */
+    color: #20211d; 
     padding: 10px;
     z-index: 2;
+}
+
+/*Carrusel de imagenes*/
+.carousel {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px; /* Aumentado para imágenes más grandes */
+    margin: auto;
+    position: relative;
+}
+.carousel-item {
+    min-width: 100%;
+    transition: transform 0.5s ease;
+}
+.carousel img {
+    width: 100%;
+}
+.carousel-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+.carousel-button {
+    background-color: beige;
+    border: none;
+    color: rgb(142, 31, 154);
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 20%; /* Flechas más atractivas */
+    font-size: 1.5em; /* Tamaño de las flechas */
+    box-shadow: #333 2px 2px 3px;
 }
