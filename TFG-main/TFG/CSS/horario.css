@@ -1,3 +1,22 @@
+/* Contenedor */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 7px 12px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Reloj */
+.clock {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: left;
+    margin: 20px;
+}
+
 /* Estilos generales */
 body {
     font-family: 'Roboto', sans-serif;
@@ -8,7 +27,7 @@ body {
 
 /* Estilos para el calendario */
 .calendar {
-    max-width: 700px;
+    max-width: 600px;
     margin: 80px auto;
     padding: 20px;
     background-color: #ffffff;
@@ -31,14 +50,15 @@ body {
 .time {
     color: #555;
 }
+
 /*div festivos*/
 .festivos {
-    background-color: beige; 
-    padding: 10px; 
-    border-radius: 5px; 
+    background-color: beige;
+    padding: 10px;
+    border-radius: 5px;
     text-align: center;
-    
 }
+
 /* div recordatorio */
 .reminder {
     text-align: center;
@@ -53,4 +73,3 @@ body {
     color: #555;
     width: 30%;
 }
-
