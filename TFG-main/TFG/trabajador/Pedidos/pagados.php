@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="/TFG-MAIN/TFG/CSS/pedidos.css">
-
 <?php
 include("../../includes/header.php");
 include '../../db/bd.inc.php';
@@ -13,6 +12,7 @@ echo '<a href="/TFG-MAIN/TFG/trabajador/pedidos/proceso.php" class="boxEP">En Pr
 echo '<a href="/TFG-MAIN/TFG/trabajador/pedidos/terminados.php" class="boxT">Terminados</a>';
 echo '<a href="/TFG-MAIN/TFG/trabajador/pedidos/pagados.php" class="boxPG">Pagados</a>';
 echo '</div>';
+
 // Comprobar si se ha hecho clic en los botones y actualizar el estado correspondiente
 if (isset($_GET['realizado'])) {
     marcarComoRealizado($_GET['realizado']);
@@ -38,7 +38,6 @@ $pedidos = obtenerIdsPedidoPagado();
 foreach ($pedidos as $idPedido) {
     // Obtener los detalles del pedido
     $detallesPedido = obtenerPedido($idPedido);
-
     echo "<div class='allPedido' id='pedido-$idPedido'>";
     echo "<div class='card'>";
     echo "<div class='pedido' onclick='toggleDetalles($idPedido)'>";
@@ -48,13 +47,11 @@ foreach ($pedidos as $idPedido) {
     echo "Usuario: " . $nombreUsuario . "<br>";
     echo "Fecha: " . $detallesPedido["fecha"] . "<br>";
     echo "</div>";
-
     echo "<div class='detalles' id='detalles-$idPedido' style='display:none;'>";
     // Verificar si el pedido está siendo realizado
     if ($detallesPedido['siendoRealizado'] == 1) {
         echo "<div class='siendoRealizado'>Pedido está siendo realizado</div>";
     }
-
     // Obtener las líneas de pedido
     $lineasPedido = obtenerLineasPedido($idPedido);
     foreach ($lineasPedido as $linea) {
@@ -71,6 +68,7 @@ foreach ($pedidos as $idPedido) {
     echo "<div class='botones'>";
     echo "<a href='?no-pagado=$idPedido' class='botonP'>No Pagado</a>";
     echo "<a href='?eliminar=$idPedido' class='botonE'>Eliminar</a>";
+    echo "<button class='botonR00' onclick='imprimirPedido($idPedido)'>Imprimir Pedido</button>";
     echo "</div>";
     echo "<div id='estado-$idPedido'></div>";
     // Obtenemos el precio total del pedido desde el campo precioPedido
@@ -88,11 +86,8 @@ foreach ($pedidos as $idPedido) {
 }
 echo "</div>";
 echo "</div>";
-echo "</div>";
-
-
-
-    include("../../includes/footer.php");
+echo "</div>";  
+include("../../includes/footer.php");
 ?>
 <script>
 function toggleDetalles(idPedido) {
@@ -102,5 +97,17 @@ function toggleDetalles(idPedido) {
     } else {
         detalles.style.display = 'none';
     }
+}
+
+function imprimirPedido(idPedido) {
+    var contenido = document.getElementById('pedido-' + idPedido).innerHTML;
+    var ventanaImpresion = window.open('', 'Imprimir Pedido');
+    ventanaImpresion.document.write('<html><head><title>Imprimir Pedido</title>');
+    ventanaImpresion.document.write('<link rel="stylesheet" href="/TFG-MAIN/TFG/CSS/pedidos.css">');
+    ventanaImpresion.document.write('</head><body >');
+    ventanaImpresion.document.write(contenido);
+    ventanaImpresion.document.write('</body></html>');
+    ventanaImpresion.document.close();
+    ventanaImpresion.print();
 }
 </script>

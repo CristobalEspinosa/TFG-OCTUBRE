@@ -13,15 +13,19 @@ require_once("../db/bd.inc.php");
 </div>
 <form action="/TFG-MAIN/TFG/trabajador/procesaArticulo.php" method="POST" class="formulario">
     <label for="articulo" class="etiqueta">Nombre del Artículo</label>
-    <input type="text" id="articulo" name="articulo" class="entrada" placeholder="Ej: Lámpara" required>
+    <input type="text" id="articulo" name="articulo" class="entrada" placeholder="Ej: Napolitana" required>
     <br>
 
     <label for="pvp" class="etiqueta">PVP</label>
-    <input type="number" step="0.01" id="pvp" name="pvp" class="entrada" placeholder="Ej: 50.99" required>
+    <input type="number" step="0.01" id="pvp" name="pvp" class="entrada" placeholder="Ej: 1.00" required>
+    <br>
+
+    <label for="precioCompra" class="etiqueta">Precio de Compra</label>
+    <input type="number" step="0.01" id="precioCompra" name="precioCompra" class="entrada" placeholder="Ej: 0.3" required>
     <br>
 
     <label for="stock" class="etiqueta">Stock</label>
-    <input type="number" id="stock" name="stock" class="entrada" placeholder="Ej: 100" required>
+    <input type="number" id="stock" name="stock" class="entrada" placeholder="Ej: 23" required>
     <br>
 
     <!-- Lista desplegable de Proveedores -->

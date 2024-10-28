@@ -26,13 +26,14 @@ function registrarse( $nombre, $apellidos, $correo, $contrasena, $tipo) {
     $sql->execute();
 }
 /*registrar nuevo producto*/
-function registrarArticulo($articulo, $pvp, $stock, $idProveedor, $idCategoria) {
+function registrarArticulo($articulo, $pvp,$precioCompra, $stock, $idProveedor, $idCategoria) {
     $conexion = conectar();
     // Preparar la consulta SQL para insertar el artículo
-    $sql = $conexion->prepare("INSERT INTO articulo (articulo, pvp, stock, idProveedor, idCategoria) VALUES (:articulo, :pvp, :stock, :idProveedor, :idCategoria)");
+    $sql = $conexion->prepare("INSERT INTO articulo (articulo, pvp, precioCompra, stock, idProveedor, idCategoria) VALUES (:articulo, :pvp, :precioCompra, :stock, :idProveedor, :idCategoria)");
     // Asociar los valores a los parámetros
     $sql->bindValue(':articulo', $articulo);
     $sql->bindValue(':pvp', $pvp);
+    $sql->bindValue(':precioCompra', $precioCompra);
     $sql->bindValue(':stock', $stock);
     $sql->bindValue(':idProveedor', $idProveedor);
     $sql->bindValue(':idCategoria', $idCategoria);
@@ -125,6 +126,21 @@ function marcarComoRealizado($idPedido) {
     // } else {
     //     echo "El envío del correo a $emailUsuario ha fallado";
     // }
+
+    // Obtener el número de teléfono del usuario
+    $sql = $conexion->prepare("SELECT telefono FROM usuario INNER JOIN pedido ON usuario.idUsuario = pedido.idUsuario WHERE pedido.idPedido=:idPedido");
+    $sql->bindParam(':idPedido', $idPedido);
+    $sql->execute();
+    $usuario = $sql->fetch(PDO::FETCH_ASSOC);
+    $numero_destino = $usuario['telefono']; // Reemplaza con el campo correspondiente de la BD
+
+    // Mensaje de WhatsApp
+    $mensaje = urlencode("Hola buenas, somos de la cantina, tu pedido está realizado y listo para recogerse");
+    $url_whatsapp = "https://wa.me/$numero_destino?text=$mensaje";
+
+    // Redirigir a WhatsApp
+    header("Location: $url_whatsapp");
+    exit();
 }
 
 function marcarComoSiendoRealizado($idPedido) {
