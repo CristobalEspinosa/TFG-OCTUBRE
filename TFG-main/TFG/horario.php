@@ -6,9 +6,14 @@
     <link rel="stylesheet" href="./CSS/horario.css">
     <title>Cantina</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
 </head>
 <body>
-    <?php include ("./includes/header.php")?>
+    <?php 
+    include ("./includes/header.php"); 
+    include './db/bd.inc.php'; 
+    ?>
 
     <!-- Contenedor de reloj y horario -->
     <div class="container">
@@ -19,25 +24,46 @@
         <div class="calendar">
             <h1>Horario de la Cantina</h1>
             <?php
-            $currentDay = date('w');
-            $currentDate = date('j de F');
-            $daysOfWeek = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
-            $holidays = ['25 de diciembre', '1 de enero', '6 de enero', '29 de marzo', '1 de mayo', '15 de agosto', '12 de octubre', '1 de noviembre'];
-            $openingTime = '8:15';
-            $closingTime = '13:00';
-            for ($i = 0; $i < count($daysOfWeek); $i++) {
-                echo '<div class="day">';
-                echo '<span class="day-name">' . $daysOfWeek[$i] . '</span>';
-                echo '<span class="time">' . $openingTime . ' - ' . $closingTime . '</span>';
-                echo '</div>';
+            $horarios = mostrarHorario();
+            echo "<table border='1'>";
+            echo "<tr><th>Día</th><th>Horario</th></tr>"; // Encabezados de la tabla
+            foreach ($horarios as $horario) {
+                echo "<tr>";
+                echo "<td>" . htmlspecialchars($horario['dia']) . "</td>";
+                echo "<td>" . htmlspecialchars($horario['horario']) . "</td>";
+                echo "</tr>";
             }
-            echo '<div class="festivos">';
-            echo 'La cantina está cerrada los sábados, domingos y festivos.';
-            echo '</div>';
+            echo "</table>";
+
+            // Mostrar botón de edición solo para Trabajadores
+            if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 'Trabajador') {
+                echo '<button id="editButton" onclick="openModal()" class="btn btn-outline-secondary ">Editar Horario</button>';
+            }
             ?>
+            <div class="festivos">
+                La cantina está cerrada los sábados, domingos y festivos.
+            </div>
         </div>
-        
     </div>
+
+    <!-- Modal de edición -->
+    <?php if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 'Trabajador'): ?>
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Editar Horario</h3>
+            <form action="update_schedule.php" method="post">
+                <?php
+                foreach ($horarios as $horario) {
+                    echo "<label for='dia_" . htmlspecialchars($horario['dia']) . "'>" . htmlspecialchars($horario['dia']) . "</label>";
+                    echo "<input type='text' id='dia_" . htmlspecialchars($horario['dia']) . "' name='horario[" . htmlspecialchars($horario['dia']) . "]' value='" . htmlspecialchars($horario['horario']) . "' required><br>";
+                }
+                ?>
+                <input type="submit" value="Guardar Cambios" class="btn btn-outline-secondary">
+            </form>
+        </div>
+    </div>
+    <?php endif; ?>
 
     <!-- Div Recordatorio de recogida -->
     <div class="reminder">
@@ -58,6 +84,14 @@
 
         setInterval(updateClock, 1000);
         updateClock(); // initial call to display clock immediately
+
+        function openModal() {
+            document.getElementById('editModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('editModal').style.display = 'none';
+        }
     </script>
 </body>
 </html>

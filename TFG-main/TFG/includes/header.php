@@ -35,6 +35,8 @@ if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 'Trabajador') {
     echo '</div>';
     echo '</div>';
     echo '<a href="/TFG-MAIN/TFG/trabajador/productos.php">Productos</a>';
+    echo '<a href="/TFG-MAIN/TFG/reservaPedido.php">  Reservar   </a>';
+    echo '<a href="/TFG-MAIN/TFG/cesta.php"> Cesta   </a>';
 } else {
     echo '<a href="/TFG-MAIN/TFG/reservaPedido.php">  Reservar   </a>';
     echo '<a href="/TFG-MAIN/TFG/cesta.php"> Cesta   </a>';

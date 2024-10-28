@@ -25,6 +25,20 @@ function registrarse( $nombre, $apellidos, $correo, $contrasena, $tipo) {
     $sql->bindValue(':tipo', $tipo);
     $sql->execute();
 }
+/*registrar nuevo producto*/
+function registrarArticulo($articulo, $pvp, $stock, $idProveedor, $idCategoria) {
+    $conexion = conectar();
+    // Preparar la consulta SQL para insertar el artículo
+    $sql = $conexion->prepare("INSERT INTO articulo (articulo, pvp, stock, idProveedor, idCategoria) VALUES (:articulo, :pvp, :stock, :idProveedor, :idCategoria)");
+    // Asociar los valores a los parámetros
+    $sql->bindValue(':articulo', $articulo);
+    $sql->bindValue(':pvp', $pvp);
+    $sql->bindValue(':stock', $stock);
+    $sql->bindValue(':idProveedor', $idProveedor);
+    $sql->bindValue(':idCategoria', $idCategoria);
+    // Ejecutar la consulta
+    $sql->execute();
+}
 /*Eliminar usuario actual*/
 function eliminarUsuarioActual($idUsuario) {
     $conexion = conectar();
@@ -46,6 +60,41 @@ function compruebaUsuario($correo, $contrasena) {
         return $user;
     } else {
         return false;
+    }
+}
+
+//horario
+function mostrarHorario(){
+    $conexion = conectar();
+
+    // Consulta para obtener todos los días y horarios, omitiendo el idDia
+    $sql = $conexion->prepare("SELECT dia, horario FROM horario");
+    $sql->execute();
+
+    // Recuperar los resultados como un array asociativo
+    $horarios = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+    return $horarios; // Devolver el array de horarios
+}
+function actualizaHorario($dia, $nuevo_horario) {
+    // Conectar a la base de datos (asumo que tienes una función `conectar()`)
+    $conexion = conectar();
+
+    // Consulta preparada para actualizar el horario
+    $sql = $conexion->prepare("UPDATE horario SET horario = :nuevo_horario WHERE dia = :dia");
+
+    // Asignar los valores a los parámetros
+    $sql->bindValue(':nuevo_horario', $nuevo_horario);
+    $sql->bindValue(':dia', $dia);
+
+    // Ejecutar la consulta
+    $resultado = $sql->execute();
+
+    // Comprobar si la actualización fue exitosa
+    if ($resultado) {
+        return true; // Actualización exitosa
+    } else {
+        return false; // Hubo un error en la actualización
     }
 }
 

@@ -14,12 +14,14 @@ include '../db/bd.inc.php';
 
 <body>
     <h1 class="titulo">Todos los productos</h1>
+    <h3><a href="/TFG-MAIN/TFG/trabajador/registroProductos.php" class="aIniciar">Registrar nuevo producto</a></h3>
     <table id="productos" class="display">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
                 <th class='precio'>Precio</th>
+                <th class='compra'>Precio Compra</th>
                 <th class='stock'>Stock</th>
             </tr>
         </thead>
@@ -31,6 +33,7 @@ include '../db/bd.inc.php';
                 echo "<td>" . $producto['idArticulo'] . "</td>";
                 echo "<td>" . $producto['articulo'] . "</td>";
                 echo "<td class='precio' data-id='" . $producto['idArticulo'] . "'>" . $producto['pvp'] . "</td>";
+                echo "<td class='compra' data-id='" . $producto['idArticulo'] . "'>" . $producto['precioCompra'] . "</td>";
                 echo "<td class='stock' data-id='" . $producto['idArticulo'] . "'>" . $producto['stock'] . "</td>";
                 echo "</tr>";
             }
