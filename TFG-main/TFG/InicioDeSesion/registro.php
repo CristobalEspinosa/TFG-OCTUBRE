@@ -6,7 +6,10 @@ require_once("../db/bd.inc.php");
 <header>
     <a href="/TFG-main/TFG/index.php" class="atras">Volver atrás</a>
 </header>
-<h1 class="tituloo">¡¡¡ Hora de Registrarse !!!</h1>
+<div class="tresd">
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.5/build/spline-viewer.js"></script>
+<spline-viewer url="https://prod.spline.design/B-GP9rfE-bYhHGvs/scene.splinecode"></spline-viewer>
+</div>
 <form action="registro2.php" method="POST" class="formulario" onsubmit="return validarContrasena() && validarCorreo();">
     <label for="nombre" class="etiqueta">Nombre</label>
     <input type="text" id="nombre" name="nombre" class="entrada" placeholder="Ej: Pepe">

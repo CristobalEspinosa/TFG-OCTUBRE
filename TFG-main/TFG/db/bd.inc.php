@@ -436,23 +436,17 @@ function obtenerPedidoPorUsuario($idUsuario) {
 
 //Funciones para contabilidad.php
 function obtenerTotalesPorMes() {
-    // Conectar a la base de datos
     $conexion = conectar();
-
-    // Preparar la consulta SQL
-    $sql = $conexion->prepare("SELECT mes, totalVentas, numPedidos FROM totales");
-
-    // Ejecutar la consulta
+    $sql = $conexion->prepare("SELECT idBeneficios, mes, totalVentas, numPedidos FROM totales");
     $sql->execute();
 
     // Obtener los resultados
     $resultados = $sql->fetchAll(PDO::FETCH_ASSOC);
-
-    // Convertir los resultados en un array asociativo con el mes como clave
     $totalesPorMes = array();
     foreach ($resultados as $resultado) {
         $mes = $resultado['mes'];
         $totalesPorMes[$mes] = array(
+            'idBeneficios' => $resultado['idBeneficios'],
             'totalVentas' => $resultado['totalVentas'],
             'numPedidos' => $resultado['numPedidos']
         );
@@ -675,4 +669,48 @@ function editarUsuarioActual($idUsuario, $nombre, $apellidos, $correo, $tipo, $c
 
     return $resultado;
 }
+//pagos
+function registrarPago($concepto, $cantidad, $idBeneficios) {
+    $conexion = conectar();
+    $conexion->beginTransaction();
+    try {
+        $sql = $conexion->prepare("INSERT INTO pagos (concepto, cantidad, idTotales) VALUES (:concepto, :cantidad, :idTotales)");
+        $sql->bindValue(':concepto', $concepto);
+        $sql->bindValue(':cantidad', $cantidad);
+        $sql->bindValue(':idTotales', $idBeneficios); 
+        $sql->execute();
 
+        $sqlUpdate = $conexion->prepare("UPDATE totales SET totalVentas = totalVentas - :cantidad WHERE idBeneficios = :idBeneficios");
+        $sqlUpdate->bindValue(':cantidad', $cantidad);
+        $sqlUpdate->bindValue(':idBeneficios', $idBeneficios);
+        $sqlUpdate->execute();
+
+        $conexion->commit();
+    } catch (Exception $e) {
+        $conexion->rollBack();
+        throw $e;
+    }
+}
+
+
+function modificarTotalVentas($idBeneficios, $nuevoTotalVentas) {
+    $conexion = conectar();
+    $sql = $conexion->prepare("UPDATE totales SET totalVentas = :nuevoTotalVentas WHERE idBeneficios = :idBeneficios");
+    $sql->bindValue(':nuevoTotalVentas', $nuevoTotalVentas, PDO::PARAM_STR);
+    $sql->bindValue(':idBeneficios', $idBeneficios, PDO::PARAM_INT);
+    return $sql->execute();
+}
+
+function obtenerBeneficios() { 
+    $conexion = conectar();
+    $sql = $conexion->prepare("SELECT idBeneficios, mes FROM totales");
+    $sql->execute();
+    return $sql->fetchAll(PDO::FETCH_ASSOC);
+}
+function obtenerGastosPorBeneficio($idTotales) {
+    $conexion = conectar();
+    $sql = $conexion->prepare("SELECT * FROM pagos WHERE idTotales = :idTotales");
+    $sql->bindValue(':idTotales', $idTotales);
+    $sql->execute();
+    return $sql->fetchAll(PDO::FETCH_ASSOC);
+}
