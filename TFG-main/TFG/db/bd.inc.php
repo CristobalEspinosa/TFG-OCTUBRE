@@ -158,18 +158,21 @@ function marcarComoPagado($idPedido) {
     $sqlPrecio->execute();
     $precio = $sqlPrecio->fetch(PDO::FETCH_ASSOC)['precioPedido'];
 
-    // Marca el pedido como pagado
-    $sql = $conexion->prepare("UPDATE pedido SET pagado=1 , realizado=0 WHERE idPedido=:idPedido");
+    $sql = $conexion->prepare("UPDATE pedido SET pagado=1, realizado=0 WHERE idPedido=:idPedido");
     $sql->bindParam(':idPedido', $idPedido);
     $sql->execute();
 
-        // Obtener el primer día del mes actual
-        $fecha = new DateTime();
-        $mes = $fecha->format('Y-m-01');
+    // Actualizar la cantidad actual de la caja
+    $sqlActualizarCaja = $conexion->prepare("UPDATE caja SET cantidadActual = cantidadActual + :precio");
+    $sqlActualizarCaja->bindParam(':precio', $precio);
+    $sqlActualizarCaja->execute();
+
+    $fecha = new DateTime();
+    $mes = $fecha->format('Y-m-01');
     
-        // Actualizar los totales
-        actualizarTotales($precio, 1);
+    actualizarTotales($precio, 1);
 }
+
 
 function eliminarPedido($idPedido) {
     $conexion = conectar();
@@ -713,4 +716,32 @@ function obtenerGastosPorBeneficio($idTotales) {
     $sql->bindValue(':idTotales', $idTotales);
     $sql->execute();
     return $sql->fetchAll(PDO::FETCH_ASSOC);
+}
+//caja
+function isCajaAbierta() {
+    $conexion = conectar();
+    $sql = $conexion->prepare("SELECT abierta FROM caja WHERE idCaja = 1");
+    $sql->execute();
+    $resultado = $sql->fetch(PDO::FETCH_ASSOC);
+
+    return $resultado['abierta'] == 1;
+}
+function abrirCaja() { 
+    $conexion = conectar(); 
+    $sql = $conexion->prepare("UPDATE caja SET abierta = 1 WHERE idCaja = 1"); 
+    $sql->execute(); 
+}
+function cerrarCaja() {
+    $conexion = conectar();
+    $sql = $conexion->prepare("UPDATE caja SET abierta = 0 , cantidadActual = 200 WHERE idCaja = 1");
+    $sql->execute();
+}
+
+function obtenerCantidadActual() {
+    $conexion = conectar();
+    $sql = $conexion->prepare("SELECT cantidadActual FROM caja WHERE idCaja = 1");
+    $sql->execute();
+    $resultado = $sql->fetch(PDO::FETCH_ASSOC);
+
+    return $resultado['cantidadActual'];
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-10-2024 a las 13:37:11
+-- Tiempo de generación: 03-11-2024 a las 16:08:51
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -84,6 +84,25 @@ INSERT INTO `articulo` (`idArticulo`, `articulo`, `pvp`, `precioCompra`, `stock`
 (47, 'Tostada Aguacate', 1.5, 0.5, 17, 1, 4),
 (48, 'Chicle Fresa', 0.1, 0.05, 45, 3, 5),
 (49, 'ejemplo', 1.09, 0.8, 34, 1, 8);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `caja`
+--
+
+CREATE TABLE `caja` (
+  `idCaja` int(11) NOT NULL,
+  `abierta` tinyint(1) NOT NULL,
+  `cantidadActual` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `caja`
+--
+
+INSERT INTO `caja` (`idCaja`, `abierta`, `cantidadActual`) VALUES
+(1, 1, 200);
 
 -- --------------------------------------------------------
 
@@ -185,7 +204,7 @@ INSERT INTO `pedido` (`idPedido`, `idUsuario`, `fecha`, `hora`, `pagado`, `reali
 (58, 11, '2024-08-05', '19:46:22', 0, 1, 2.40, 1, '2ªHORA', 0),
 (60, 11, '2024-08-26', '12:33:26', 1, 0, 2.00, 1, '2ªHORA', 0),
 (61, 11, '2024-09-16', '12:05:06', 0, 0, 0.00, NULL, NULL, NULL),
-(62, 4, '2024-09-17', '02:07:30', 0, 1, 2.60, 1, '2ªHORA', 0),
+(62, 4, '2024-09-17', '02:07:30', 0, 0, 2.60, 1, '2ªHORA', 1),
 (63, 36, '2024-09-18', '00:28:33', 0, 0, 0.00, NULL, NULL, NULL),
 (66, 4, '2024-09-25', '13:17:08', 0, 0, 0.00, NULL, NULL, NULL),
 (67, 4, '2024-09-30', '12:01:51', 1, 0, 0.20, 1, '1ªHORA', 0),
@@ -263,7 +282,8 @@ INSERT INTO `totales` (`mes`, `numPedidos`, `totalVentas`, `idBeneficios`) VALUE
 ('2024-07-01', 4, 18.00, 3),
 ('2024-08-01', 11, 27.20, 4),
 ('2024-09-01', 19, 48.63, 5),
-('2024-10-01', 1, 2.20, 35);
+('2024-10-01', 1, 3.20, 35),
+('2024-11-01', 1, 2.60, 36);
 
 -- --------------------------------------------------------
 
@@ -302,6 +322,12 @@ ALTER TABLE `articulo`
   ADD PRIMARY KEY (`idArticulo`),
   ADD KEY `idCategoria` (`idCategoria`),
   ADD KEY `idProveedor` (`idProveedor`);
+
+--
+-- Indices de la tabla `caja`
+--
+ALTER TABLE `caja`
+  ADD PRIMARY KEY (`idCaja`);
 
 --
 -- Indices de la tabla `categoria`
@@ -367,6 +393,12 @@ ALTER TABLE `articulo`
   MODIFY `idArticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
+-- AUTO_INCREMENT de la tabla `caja`
+--
+ALTER TABLE `caja`
+  MODIFY `idCaja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
@@ -400,7 +432,7 @@ ALTER TABLE `pedido-linea`
 -- AUTO_INCREMENT de la tabla `totales`
 --
 ALTER TABLE `totales`
-  MODIFY `idBeneficios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `idBeneficios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
