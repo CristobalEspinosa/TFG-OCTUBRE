@@ -12,6 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
 <?php
@@ -83,7 +84,8 @@ include './db/bd.inc.php';
             echo "<div id='estado-$idPedido'></div>";
             echo "<div id='total-$idPedido'>Total: " . $detallesPedido["precioPedido"] . " €</div>";
              if ($finalizadoPedido) {
-            echo "<div id='recogida-$idPedido'>Recogida:   " . $detallesPedido["horaRecogida"] . " </div>";
+            echo "<div id='recogida-$idPedido'>Día:   " . $detallesPedido["fechaRecogida"] ."  </div>";
+            echo "<div id='recogida-$idPedido'>Hora:   " . $detallesPedido["horaRecogida"] ."  </div>";
              }
             echo "</div>";
             if (!$estadoPedido) {
@@ -99,11 +101,24 @@ include './db/bd.inc.php';
     <option value="4ªHORA">4ª HORA</option>
     <option value="5ªHORA">5ª HORA</option>
 </select>';
+echo "<br>";
+echo "Día de recogida: ";
+echo '<select id="fechaRecogida" name="fechaRecogida">';
+echo '<option value="HOY" selected>Hoy</option>';
+echo '<option value="MAÑANA">Mañana</option>';
+echo '</select>';
                     echo '<center> <button type="button" class="finalizar btn btn-success" data-id="'.$idPedido.'" onclick="finalizarPedido('.$idPedido.')">Finalizar</button> </center>';
                 }
             }
 
             echo "</div>";
+            ?>
+            <div class="d-flex justify-content-center mt-4">
+    <button class="btn btn-primary btn-lg shadow-sm rounded-pill">
+        <i class="bi bi-plus-circle"></i> Crear nuevo pedido
+    </button>
+</div>
+<?php
         } else {
             echo '<h3>No tienes pedidos pendientes.</h3>';
         }
@@ -133,14 +148,37 @@ include("./includes/footer.php")
   $(document).ready(function() {
     // Marcar pedido como finalizado
     $(".finalizar.btn-success").click(function() {
-        var idPedido = $(this).data('id'); 
-        var horaRecogida = $('#horaRecogida').val(); 
+        var idPedido = $(this).data('id');
+        var horaRecogida = $('#horaRecogida').val();
+        var fechaRecogida = $('#fechaRecogida').val(); // Obtener valor del select
+
+        // Procesar la fecha según el valor seleccionado en el select
+        var fechaHoy = new Date();
+        var fechaRecogidaFormateada;
+
+        if (fechaRecogida === 'HOY') {
+            // Formatear la fecha de hoy
+            var diaHoy = fechaHoy.getDate().toString().padStart(2, '0');
+            var mesHoy = (fechaHoy.getMonth() + 1).toString().padStart(2, '0');
+            var anioHoy = fechaHoy.getFullYear();
+            fechaRecogidaFormateada = anioHoy + '-' + mesHoy + '-' + diaHoy;
+        } else if (fechaRecogida === 'MAÑANA') {
+            // Calcular la fecha de mañana
+            fechaHoy.setDate(fechaHoy.getDate() + 1);
+            var diaManana = fechaHoy.getDate().toString().padStart(2, '0');
+            var mesManana = (fechaHoy.getMonth() + 1).toString().padStart(2, '0');
+            var anioManana = fechaHoy.getFullYear();
+            fechaRecogidaFormateada = anioManana + '-' + mesManana + '-' + diaManana;
+        }
+
+        // Realizar la llamada AJAX
         $.ajax({
             url: './db/finalizarPedido.php',
             type: 'post',
             data: {
                 idPedido: idPedido,
-                horaRecogida: horaRecogida, 
+                horaRecogida: horaRecogida,
+                fechaRecogida: fechaRecogidaFormateada, // Enviar la fecha formateada
                 action: 'finalizar'
             },
             success: function(response) {

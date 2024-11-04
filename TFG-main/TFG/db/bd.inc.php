@@ -200,17 +200,19 @@ function marcarComoSiendoNoRealizado($idPedido) {
     $sql->execute();
 }
 //poner como finalizado o no finalizado el pedido en la cesta
-function finalizarPedidoConHora($idPedido, $horaRecogida) {
+function finalizarPedidoConHoraFecha($idPedido, $horaRecogida,$fechaRecogida) {
     $conexion = conectar();
-    $sql = $conexion->prepare("UPDATE pedido SET finalizado=1, horaRecogida=:horaRecogida WHERE idPedido=:idPedido");
+    $sql = $conexion->prepare("UPDATE pedido SET finalizado=1, horaRecogida=:horaRecogida, fechaRecogida=:fechaRecogida WHERE idPedido=:idPedido");
     $sql->bindParam(':idPedido', $idPedido);
     $sql->bindParam(':horaRecogida', $horaRecogida);
+    $sql->bindParam(':fechaRecogida', $fechaRecogida);
     $sql->execute();
 
     if ($_POST['action'] == 'finalizar') {
         $idPedido = $_POST['idPedido'];
-        $horaRecogida = $_POST['horaRecogida']; // Asegúrate de validar y sanear este valor
-        finalizarPedidoConHora($idPedido, $horaRecogida);
+        $horaRecogida = $_POST['horaRecogida']; 
+        $fechaRecogida = $_POST['fechaRecogida']; 
+        finalizarPedidoConHoraFecha($idPedido, $horaRecogida,$fechaRecogida);
     }
 }
 
