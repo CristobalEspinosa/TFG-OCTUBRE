@@ -73,6 +73,7 @@ foreach ($pedidos as $idPedido) {
     echo "<div id='estado-$idPedido'></div>";
     // Obtenemos el precio total del pedido desde el campo precioPedido
     echo "<div id='recogida-$idPedido'>Recogida: " . $detallesPedido["horaRecogida"] . "</div>";
+    echo "<div id='recogida-$idPedido'>Fecha de Recogida: " . $detallesPedido["fechaRecogida"] . "</div>";
     echo "<div id='total-$idPedido'>Total: " . $detallesPedido["precioPedido"] . "€</div>";
     if ($detallesPedido['realizado'] == 1) {
         echo "<div class='realizado'>Pedido Realizado</div>";

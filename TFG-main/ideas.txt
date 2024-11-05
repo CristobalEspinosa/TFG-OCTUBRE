@@ -6,7 +6,7 @@
 -Cambiar las peticiones de datos en vez de alerts, que sean modales   HECHOOOO
 -En mi perfil poder cambiar el correo y contraseña y algún campo que otro del perfil     HECHOOOO
 -Añadir campo boolean finalizado, y un campo horaRecogida, y siendoRealizado a la tabla pedido       HECHOOOO
--Ver manera de poder pedir la hora en la que quiere recogerlo       HECHOOOO
+-Ver manera de poder pedir la hora y fecha en la que quiere recogerlo       HECHOOOO
 -Añadir botón en cesta que cambie el estado de finalizado      HECHOOOO
 -cuando el pedido este en finalizado no poder cambiar ni eliminar nada      HECHOOOO
 -Cuando un pedido esta marcado como realizado no se pueda anular       HECHOOOO
@@ -20,7 +20,15 @@
 -Meter una grafica para la contabilidad      HECHOOOO
 -Enlazar la tabla pedido con la tabla totales, mediante un campo en pedidos que es una fk a idTotales  HECHOOOO
 -Cambiar los colores de los botones del  hover de los pedidos y poner en cada pestaña el boton indicado    HECHOOOO
--TPV      NO LOGRADO
+-Agregar nuevos articulos      HECHOOOO
+-Tener todos los pedidos que se quiera      HECHOOOO
+-Boton de imprimir pedido, y que se pueda imprimir como un pdf      HECHOOOO
+-Vinculacion con la api de whatsapp      HECHOOOO
+-Apertura y cierre de caja      HECHOOOO
+-Añadir el precio de compra de un articulo      HECHOOOO
+-Poder modificar el horario      HECHOOOO
+-Añadir gastos de mes       HECHOOOO
+-TPV      NO LOGRADO 
 -Añadir 392845798739 tipos de categorias para hacer un formulario dinamico y conectado a la bbdd  NO LOGRADO
 -Controlar precios con variables en vez de con campos en la bbdd   NO LOGRADO
 

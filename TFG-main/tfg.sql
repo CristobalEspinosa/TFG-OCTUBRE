@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-11-2024 a las 16:08:51
+-- Tiempo de generación: 05-11-2024 a las 01:47:38
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -42,7 +42,7 @@ CREATE TABLE `articulo` (
 --
 
 INSERT INTO `articulo` (`idArticulo`, `articulo`, `pvp`, `precioCompra`, `stock`, `idProveedor`, `idCategoria`) VALUES
-(1, 'Café Solo', 1, 0.3, 23, 4, 2),
+(1, 'Café Solo', 1, 0.3, 22, 4, 2),
 (2, 'Café Manchado', 1.1, 0.3, 49, 4, 2),
 (3, 'Café Cortado', 1.1, 0.3, 50, 4, 2),
 (4, 'Infusión Manzanilla', 1, 0.3, 50, 4, 10),
@@ -62,7 +62,7 @@ INSERT INTO `articulo` (`idArticulo`, `articulo`, `pvp`, `precioCompra`, `stock`
 (22, 'Tostada Aceite', 1.5, 0.5, 12, 1, 4),
 (23, 'Tostada Atún', 1.5, 0.5, 23, 1, 4),
 (24, 'Tostada Tomate', 1.5, 0.5, 11, 1, 4),
-(26, 'Pizza Jamón', 1, 0.3, 15, 5, 3),
+(26, 'Pizza Jamón', 1, 0.3, 14, 5, 3),
 (27, 'Pizza Atún', 1, 0.3, 25, 5, 3),
 (30, 'Empanadilla Jamón', 0.7, 0.2, 17, 1, 8),
 (31, 'Empanadilla Atún', 0.7, 0.2, 23, 1, 8),
@@ -76,8 +76,8 @@ INSERT INTO `articulo` (`idArticulo`, `articulo`, `pvp`, `precioCompra`, `stock`
 (39, 'Bolsa Gusanitos', 0.35, 0.1, 33, 2, 7),
 (40, 'Bolsa Fantasmitos', 0.35, 0.1, 18, 2, 7),
 (41, 'Fanta de Naranja', 1.2, 0.5, 43, 2, 6),
-(42, 'Fanta de Limón', 1.2, 0.5, 21, 2, 6),
-(43, 'CocaCola', 1.2, 0.5, -2, 2, 6),
+(42, 'Fanta de Limón', 1.2, 0.5, 18, 2, 6),
+(43, 'CocaCola', 1.2, 0.5, -3, 2, 6),
 (44, 'Nestea', 1.2, 0.5, 46, 2, 6),
 (45, 'Aquarius', 1.2, 0.5, 34, 2, 6),
 (46, 'Agua', 1.2, 0.5, 100, 2, 6),
@@ -187,6 +187,7 @@ CREATE TABLE `pedido` (
   `idUsuario` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `hora` time NOT NULL,
+  `fechaRecogida` date DEFAULT NULL,
   `pagado` tinyint(1) NOT NULL,
   `realizado` tinyint(1) NOT NULL,
   `precioPedido` decimal(10,2) NOT NULL,
@@ -199,16 +200,11 @@ CREATE TABLE `pedido` (
 -- Volcado de datos para la tabla `pedido`
 --
 
-INSERT INTO `pedido` (`idPedido`, `idUsuario`, `fecha`, `hora`, `pagado`, `realizado`, `precioPedido`, `finalizado`, `horaRecogida`, `siendoRealizado`) VALUES
-(57, 4, '2024-07-10', '17:17:21', 0, 0, 3.60, 1, 'RECREO', 0),
-(58, 11, '2024-08-05', '19:46:22', 0, 1, 2.40, 1, '2ªHORA', 0),
-(60, 11, '2024-08-26', '12:33:26', 1, 0, 2.00, 1, '2ªHORA', 0),
-(61, 11, '2024-09-16', '12:05:06', 0, 0, 0.00, NULL, NULL, NULL),
-(62, 4, '2024-09-17', '02:07:30', 0, 0, 2.60, 1, '2ªHORA', 1),
-(63, 36, '2024-09-18', '00:28:33', 0, 0, 0.00, NULL, NULL, NULL),
-(66, 4, '2024-09-25', '13:17:08', 0, 0, 0.00, NULL, NULL, NULL),
-(67, 4, '2024-09-30', '12:01:51', 1, 0, 0.20, 1, '1ªHORA', 0),
-(68, 4, '2024-10-09', '13:34:01', 0, 0, 0.00, NULL, NULL, NULL);
+INSERT INTO `pedido` (`idPedido`, `idUsuario`, `fecha`, `hora`, `fechaRecogida`, `pagado`, `realizado`, `precioPedido`, `finalizado`, `horaRecogida`, `siendoRealizado`) VALUES
+(60, 11, '2024-08-26', '12:33:26', NULL, 1, 0, 2.00, 1, '2ªHORA', 0),
+(61, 11, '2024-09-16', '12:05:06', NULL, 0, 0, 0.00, NULL, NULL, NULL),
+(63, 36, '2024-09-18', '00:28:33', NULL, 0, 0, 0.00, NULL, NULL, NULL),
+(71, 4, '2024-11-05', '01:02:26', '2024-11-05', 0, 0, 1.00, 1, 'RECREO', 0);
 
 -- --------------------------------------------------------
 
@@ -230,13 +226,8 @@ CREATE TABLE `pedido-linea` (
 --
 
 INSERT INTO `pedido-linea` (`idPedidoLinea`, `idArticulo`, `cantidad`, `idPedido`, `extra`, `precioLinea`) VALUES
-(64, 43, 3, 57, NULL, 3.60),
-(65, 42, 2, 58, NULL, 2.40),
 (67, 26, 2, 60, NULL, 2.00),
-(68, 24, 1, 62, NULL, 1.50),
-(69, 2, 1, 62, NULL, 1.10),
-(72, 34, 1, 67, NULL, 0.10),
-(73, 33, 1, 67, NULL, 0.10);
+(75, 1, 1, 71, NULL, 1.00);
 
 -- --------------------------------------------------------
 
@@ -420,13 +411,13 @@ ALTER TABLE `pagos`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `idPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `idPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT de la tabla `pedido-linea`
 --
 ALTER TABLE `pedido-linea`
-  MODIFY `idPedidoLinea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `idPedidoLinea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT de la tabla `totales`

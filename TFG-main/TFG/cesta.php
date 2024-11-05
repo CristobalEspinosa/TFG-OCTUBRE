@@ -26,99 +26,86 @@ include './db/bd.inc.php';
         echo '<h1 class="titulo">Mi Cesta:</h1>';
         echo '<div class="cesta">';
         $idUsuario = obtenerIdUsuario();
-        $idPedido = obtenerUltimoPedidoNoPagado($idUsuario);
-        $finalizadoPedido = obtenerFinalizadoPedido($idPedido);
+        $pedidosNoPagados = obtenerPedidosNoPagados($idUsuario);
 
-        if ($idPedido) {
-            $detallesPedido = obtenerPedido($idPedido);
-            $estadoPedido = obtenerEstadoPedido($idPedido);
-            if ($estadoPedido) {
-                echo '<h3>Tu pedido ha sido realizado y está preparado para la entrega</h3>';
-            } else {
-                echo '<h3>Tu pedido está en proceso.</h3>';
-            }
-            echo "<div class='pedidoUsuario' id='pedido-$idPedido'>";
-            echo "<div class='card'>";
-            
-            echo "<div class='pedido'>";
-            echo "ID: ". $detallesPedido["idPedido"] ."<br>" . "Fecha: " . $detallesPedido["fecha"] . "<br>";
-            echo "</div>";
-
-            echo "<table class='table'>";
-            echo "<thead>";
-            echo "<tr>";
-            echo "<th>Artículo</th>";
-            echo "<th>Cantidad</th>";
-            echo "<th>Precio Unitario</th>";
-            echo "<th>Total</th>";
-            echo "<th>Acciones</th>";
-            echo "</tr>";
-            echo "</thead>";
-            echo "<tbody>";
-
-            $lineasPedido = obtenerLineasPedido($idPedido);
-            foreach ($lineasPedido as $linea) {
-                $nombreArticulo = obtenerNombreArticulo($linea["idArticulo"]);
-                $precioArticulo = obtenerPrecioArticulo($linea["idArticulo"]);
-                $precioTotal = $precioArticulo * $linea["cantidad"];
-
-                echo "<tr>";
-                echo "<td>" . $nombreArticulo . "</td>";
-                echo "<td>" . $linea["cantidad"] . "</td>";
-                echo "<td>" . $precioArticulo . "€</td>";
-                echo "<td>" . $precioTotal . "€</td>";
-                if (!$estadoPedido) {
-                if (!$finalizadoPedido) {
-                echo "<td>";
-                echo "<button class='btn btn-outline-danger' onclick='eliminarLinea(" . $linea["idPedidoLinea"] . ")'><i class='fas fa-trash'></i></button>";
-                echo "<button class='btn btn-outline-warning' onclick='modificarCantidad(" . $linea["idPedidoLinea"] . ", " . $linea["idArticulo"] . ")'><i class='fas fa-pencil-alt'></i></button>";
-                echo "</td>";
-                }
-                echo "</tr>";
-            }
-        }
-
-            echo "</tbody>";
-            echo "</table>";
-
-            echo "<div id='estado-$idPedido'></div>";
-            echo "<div id='total-$idPedido'>Total: " . $detallesPedido["precioPedido"] . " €</div>";
-             if ($finalizadoPedido) {
-            echo "<div id='recogida-$idPedido'>Día:   " . $detallesPedido["fechaRecogida"] ."  </div>";
-            echo "<div id='recogida-$idPedido'>Hora:   " . $detallesPedido["horaRecogida"] ."  </div>";
-             }
-            echo "</div>";
-            if (!$estadoPedido) {
-                if ($finalizadoPedido) {
-                    echo '<center> <button type="button" class="finalizar btn btn-warning" data-id="'.$idPedido.'" onclick="finalizarPedido('.$idPedido.')">Seguir pidiendo</button> </center>';
+        if ($pedidosNoPagados) {
+            foreach ($pedidosNoPagados as $pedido) {
+                $idPedido = $pedido['idPedido'];
+                $estadoPedido = obtenerEstadoPedido($idPedido);
+                $finalizadoPedido = obtenerFinalizadoPedido($idPedido);
+                
+                if ($estadoPedido) {
+                    echo '<h3>Tu pedido ha sido realizado y está preparado para la entrega</h3>';
                 } else {
-                    echo "Hora de recogida:   ";
-                  echo '<select id="horaRecogida" name="horaRecogida">
-    <option value="RECREO" selected>RECREO</option>
-    <option value="1ªHORA">1ª HORA</option>
-    <option value="2ªHORA">2ª HORA</option>
-    <option value="3ªHORA">3ª HORA</option>
-    <option value="4ªHORA">4ª HORA</option>
-    <option value="5ªHORA">5ª HORA</option>
-</select>';
-echo "<br>";
-echo "Día de recogida: ";
-echo '<select id="fechaRecogida" name="fechaRecogida">';
-echo '<option value="HOY" selected>Hoy</option>';
-echo '<option value="MAÑANA">Mañana</option>';
-echo '</select>';
-                    echo '<center> <button type="button" class="finalizar btn btn-success" data-id="'.$idPedido.'" onclick="finalizarPedido('.$idPedido.')">Finalizar</button> </center>';
+                    echo '<h3>Tu pedido está en proceso.</h3>';
                 }
-            }
 
-            echo "</div>";
-            ?>
-            <div class="d-flex justify-content-center mt-4">
-    <button class="btn btn-primary btn-lg shadow-sm rounded-pill">
-        <i class="bi bi-plus-circle"></i> Crear nuevo pedido
-    </button>
-</div>
-<?php
+                echo "<div class='pedidoUsuario' id='pedido-$idPedido'>";
+                echo "<div class='card'>";
+
+                // Información del pedido
+                echo "<div class='pedido'>";
+                echo "ID: " . $pedido["idPedido"] . "<br>" . "Fecha: " . $pedido["fecha"] . "<br>";
+                echo "</div>";
+
+                echo "<table class='table'>";
+                echo "<thead><tr><th>Artículo</th><th>Cantidad</th><th>Precio Unitario</th><th>Total</th><th>Acciones</th></tr></thead>";
+                echo "<tbody>";
+
+                $lineasPedido = obtenerLineasPedido($idPedido);
+                foreach ($lineasPedido as $linea) {
+                    $nombreArticulo = obtenerNombreArticulo($linea["idArticulo"]);
+                    $precioArticulo = obtenerPrecioArticulo($linea["idArticulo"]);
+                    $precioTotal = $precioArticulo * $linea["cantidad"];
+
+                    echo "<tr>";
+                    echo "<td>" . $nombreArticulo . "</td>";
+                    echo "<td>" . $linea["cantidad"] . "</td>";
+                    echo "<td>" . $precioArticulo . "€</td>";
+                    echo "<td>" . $precioTotal . "€</td>";
+                    echo "<td>";
+                    if (!$estadoPedido && !$finalizadoPedido) {
+                        echo "<button class='btn btn-outline-danger' onclick='eliminarLinea(" . $linea["idPedidoLinea"] . ")'><i class='fas fa-trash'></i></button>";
+                        echo "<button class='btn btn-outline-warning' onclick='modificarCantidad(" . $linea["idPedidoLinea"] . ", " . $linea["idArticulo"] . ")'><i class='fas fa-pencil-alt'></i></button>";
+                    }
+                    echo "</td></tr>";
+                }
+
+                echo "</tbody></table>";
+
+                // Total y detalles de recogida
+                echo "<div id='total-$idPedido'>Total: " . $pedido["precioPedido"] . " €</div>";
+                if ($finalizadoPedido) {
+                    echo "<div id='recogida-$idPedido'>Día: " . $pedido["fechaRecogida"] . "</div>";
+                    echo "<div id='recogida-$idPedido'>Hora: " . $pedido["horaRecogida"] . "</div>";
+                }
+
+                // Botón de finalizar y selectores de recogida
+                if (!$estadoPedido) {
+                    if ($finalizadoPedido) {
+                        echo '<center><button type="button" class="finalizar btn btn-warning" data-id="'.$idPedido.'" onclick="finalizarPedido('.$idPedido.')">Seguir pidiendo</button></center>';
+                    } else {
+                        echo "<label>Hora de recogida:</label>";
+                        echo '<select id="horaRecogida" name="horaRecogida">
+                                <option value="RECREO" selected>RECREO</option>
+                                <option value="1ªHORA">1ª HORA</option>
+                                <option value="2ªHORA">2ª HORA</option>
+                                <option value="3ªHORA">3ª HORA</option>
+                                <option value="4ªHORA">4ª HORA</option>
+                                <option value="5ªHORA">5ª HORA</option>
+                              </select>';
+                        echo "<br><label>Día de recogida:</label>";
+                        echo '<select id="fechaRecogida" name="fechaRecogida">
+                                <option value="HOY" selected>Hoy</option>
+                                <option value="MAÑANA">Mañana</option>
+                              </select>';
+                        echo '<center><button type="button" class="finalizar btn btn-success" data-id="'.$idPedido.'" onclick="finalizarPedido('.$idPedido.')">Finalizar</button>';
+                        echo '<button type="button" class="btn btn-danger" onclick="eliminarPedido('.$idPedido.')">Eliminar</button></center>';
+                    }
+                }
+
+                echo "</div></div>";
+            }
         } else {
             echo '<h3>No tienes pedidos pendientes.</h3>';
         }
@@ -127,19 +114,10 @@ echo '</select>';
         echo '<div class="login-message">';
         echo '<h1 class="tituloReserva">Por favor inicie sesión para seguir</h1>';
         echo '<p class="pIniciar">Para poder hacer un pedido tienes que <a href="/TFG-main/TFG/InicioDeSesion/inicioSesion.php" class="aIniciar">iniciar sesión</a></p>';
-        echo '</br>';
-        echo '</br>';
-        echo '</br>';
-        echo '</br>';
-        echo '</br>';
-        echo '</br>';
         echo '</div>';
     }
     ?>
 </body>
-
-
-
 <?php
 include("./includes/footer.php")
 ?>
@@ -237,6 +215,43 @@ include("./includes/footer.php")
             });
         }
     }
+
+    function crearNuevoPedido() {
+    fetch('./db/creaPedido.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({})
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert("Pedido creado exitosamente");
+            // Aquí puedes actualizar la página o redirigir al usuario
+            window.location.reload(); // Recargar la página para ver el nuevo pedido
+        } else {
+            alert("Hubo un error al crear el pedido.");
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+function eliminarPedido(idPedido) {
+    if (confirm("¿Estás seguro de que deseas eliminar este pedido?")) {
+        $.ajax({
+            url: './db/bd.inc.php',
+            type: 'post',
+            data: {
+                'action': 'eliminarPedido',
+                'idPedido': idPedido
+            },
+            success: function(response) {
+                alert("Pedido eliminado correctamente.");
+                location.reload();
+            }
+        });
+    }
+}
 </script>
 
 </html>

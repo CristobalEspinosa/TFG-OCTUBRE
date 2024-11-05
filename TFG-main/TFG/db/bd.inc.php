@@ -132,10 +132,10 @@ function marcarComoRealizado($idPedido) {
     $sql->bindParam(':idPedido', $idPedido);
     $sql->execute();
     $usuario = $sql->fetch(PDO::FETCH_ASSOC);
-    $numero_destino = $usuario['telefono']; // Reemplaza con el campo correspondiente de la BD
+    $numero_destino = $usuario['telefono']; 
 
     // Mensaje de WhatsApp
-    $mensaje = urlencode("Hola buenas, somos de la cantina, tu pedido está realizado y listo para recogerse");
+    $mensaje = urlencode("Hola buenas, somos de la cantina del IES Ribera de los Molinos, tu pedido está realizado y listo para recogerse");
     $url_whatsapp = "https://wa.me/$numero_destino?text=$mensaje";
 
     // Redirigir a WhatsApp
@@ -173,7 +173,17 @@ function marcarComoPagado($idPedido) {
     actualizarTotales($precio, 1);
 }
 
-
+if (isset($_POST['action']) && $_POST['action'] === 'eliminarPedido') {
+     if (isset($_POST['idPedido'])) { 
+        $idPedido = $_POST['idPedido']; 
+        eliminarPedido($idPedido); 
+        echo json_encode(['success' => true]);
+         exit; 
+        } else {
+             echo json_encode(['success' => false, 'message' => 'ID de pedido no encontrado']);
+              exit; 
+            } 
+        }
 function eliminarPedido($idPedido) {
     $conexion = conectar();
     
@@ -215,9 +225,6 @@ function finalizarPedidoConHoraFecha($idPedido, $horaRecogida,$fechaRecogida) {
         finalizarPedidoConHoraFecha($idPedido, $horaRecogida,$fechaRecogida);
     }
 }
-
-
-
 function marcarComoNoFinalizado($idPedido) {
     $conexion = conectar();
     $sql = $conexion->prepare("UPDATE pedido SET finalizado=0 WHERE idPedido=:idPedido");
@@ -370,6 +377,15 @@ function obtenerPedido($idPedido) {
     $sql->setFetchMode(PDO::FETCH_ASSOC);
     return $sql->fetch();
 }
+
+function obtenerPedidosNoPagados($idUsuario) {
+    $conexion = conectar();
+    $sql = $conexion->prepare("SELECT * FROM `pedido` WHERE `idUsuario` = :idUsuario AND `pagado` = 0");
+    $sql->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
+    $sql->execute();
+    return $sql->fetchAll(PDO::FETCH_ASSOC); // Devuelve todos los pedidos no pagados como un array asociativo
+}
+
 
 function ultimoPedidoPagado($idUsuario) {
     $conexion = conectar();
