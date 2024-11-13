@@ -3,10 +3,13 @@ include("../includes/header.php");
 include '../db/bd.inc.php';
 ?>
 <link rel="stylesheet" href="/TFG-MAIN/TFG/CSS/contabilidad.css">
+<link rel="stylesheet" href="/TFG-MAIN/TFG/CSS/footer.css">
+<link rel="stylesheet" href="/TFG-MAIN/TFG/CSS/header.css">
 <!-- Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqk8aP+0LMXbP7B6dnCFDLIi+3e3+LVHj4g1J6Q8oD3G2C9Q7p+5a" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<title>Cantina-Contabilidad</title>
 
 <body>
     <h1 class="titulo">Resumen de Ventas</h1>

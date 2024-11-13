@@ -3,6 +3,8 @@ include("../includes/header.php");
 include '../db/bd.inc.php';
 ?>
 <link rel="stylesheet" href="/TFG-MAIN/TFG/CSS/producto.css">
+<link rel="stylesheet" href="/TFG-MAIN/TFG/CSS/footer.css">
+<link rel="stylesheet" href="/TFG-MAIN/TFG/CSS/header.css">
 <!-- Jquery y datatables -->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
@@ -11,6 +13,7 @@ include '../db/bd.inc.php';
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- Bootstrap JS -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<title>Cantina-Productos</title>
 
 <body>
     <h1 class="titulo">Todos los productos</h1>

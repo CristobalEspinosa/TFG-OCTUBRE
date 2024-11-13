@@ -1,4 +1,7 @@
 <link rel="stylesheet" href="/TFG-MAIN/TFG/CSS/pedidos.css">
+<link rel="stylesheet" href="/TFG-MAIN/TFG/CSS/footer.css">
+<link rel="stylesheet" href="/TFG-MAIN/TFG/CSS/header.css">
+<title>Cantina-Pedidos</title>
 <?php
 include("../includes/header.php");
 ?>

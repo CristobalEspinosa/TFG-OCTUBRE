@@ -3,6 +3,7 @@ require_once("../db/bd.inc.php");
 ?>
 
 <link rel="stylesheet" href="/TFG-main/TFG/CSS/inicioSesion.css">
+<title>Cantina-RegistroUsuario</title>
 <header>
     <a href="/TFG-main/TFG/index.php" class="atras">Volver atrás</a>
 </header>

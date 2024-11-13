@@ -5,6 +5,7 @@ $beneficios = obtenerBeneficios();
 ?>
 
 <link rel="stylesheet" href="/TFG-main/TFG/CSS/inicioSesion.css">
+<title>Cantina-Nuevo Gasto</title>
 <header>
     <a href="/TFG-main/TFG/trabajador/contabilidad.php" class="atras">Volver atrás</a>
 </header>

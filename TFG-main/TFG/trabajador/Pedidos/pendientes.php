@@ -1,4 +1,7 @@
 <link rel="stylesheet" href="/TFG-MAIN/TFG/CSS/pedidos.css">
+<link rel="stylesheet" href="/TFG-MAIN/TFG/CSS/footer.css">
+<link rel="stylesheet" href="/TFG-MAIN/TFG/CSS/header.css">
+<title>Cantina-PedidosPendientes</title>
 
 <?php
 include("../../includes/header.php");
@@ -39,13 +42,27 @@ $pedidos = obtenerIdsPedidoFinalizados();
 foreach ($pedidos as $idPedido) {
     // Obtener los detalles del pedido
     $detallesPedido = obtenerPedido($idPedido);
-
     echo "<div class='allPedido' id='pedido-$idPedido'>";
     echo "<div class='card'>";
     echo "<div class='pedido' onclick='toggleDetalles($idPedido)'>";
     // Obtener el nombre del usuario
     $nombreUsuario = obtenerNombreUsuario($detallesPedido["idUsuario"]);
-    echo "ID: " . $detallesPedido["idPedido"] . "<br>";
+    // Definir las fechas
+$fechaRecogida = new DateTime($detallesPedido["fechaRecogida"]);
+$fechaActual = new DateTime();
+$fechaActual->setTime(0, 0, 0); // Para comparar solo la fecha sin la hora
+
+// Determinar el mensaje de la fecha de recogida
+if ($fechaRecogida == $fechaActual) {
+    $mensajeRecogida = "HOY";
+} elseif ($fechaRecogida == $fechaActual->modify('+1 day')) {
+    $mensajeRecogida = "Mañana";
+} elseif ($fechaRecogida < $fechaActual) {
+    $mensajeRecogida = "CADUCADO";
+} else {
+    $mensajeRecogida = $fechaRecogida->format('d/m/Y'); // Fecha en formato bonito si no es hoy, mañana, ni caducado
+}
+    echo "Fecha de recogida: " . $mensajeRecogida . "<br>";
     echo "Usuario: " . $nombreUsuario . "<br>";
     echo "Fecha: " . $detallesPedido["fecha"] . "<br>";
     echo "</div>";

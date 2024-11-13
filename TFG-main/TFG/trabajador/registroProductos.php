@@ -4,6 +4,7 @@ require_once("../db/bd.inc.php");
 
 
 <link rel="stylesheet" href="/TFG-main/TFG/CSS/inicioSesion.css">
+<title>Cantina-NuevoProducto</title>
 <header>
     <a href="/TFG-main/TFG/trabajador/productos.php" class="atras">Volver atrás</a>
 </header>

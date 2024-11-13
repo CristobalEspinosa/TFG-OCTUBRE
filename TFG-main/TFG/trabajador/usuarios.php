@@ -3,6 +3,8 @@ include("../includes/header.php");
 include '../db/bd.inc.php';
 ?>
 <link rel="stylesheet" href="/TFG-MAIN/TFG/CSS/usuario.css">
+<link rel="stylesheet" href="/TFG-MAIN/TFG/CSS/footer.css">
+<link rel="stylesheet" href="/TFG-MAIN/TFG/CSS/header.css">
 <!-- Jquery y datatables -->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
@@ -13,6 +15,7 @@ include '../db/bd.inc.php';
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<title>Cantina-Usuarios</title>
 
 <body>
     <h1 class="titulo">Todos los usuarios</h1>

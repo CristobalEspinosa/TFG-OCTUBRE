@@ -139,7 +139,7 @@ function marcarComoRealizado($idPedido) {
     $url_whatsapp = "https://wa.me/$numero_destino?text=$mensaje";
 
     // Redirigir a WhatsApp
-    header("Location: $url_whatsapp");
+    echo "<script type='text/javascript'>window.open('$url_whatsapp', '_blank');</script>";
     exit();
 }
 
@@ -170,7 +170,7 @@ function marcarComoPagado($idPedido) {
     $fecha = new DateTime();
     $mes = $fecha->format('Y-m-01');
     
-    actualizarTotales($precio, 1);
+    actualizarTotales(0, 1);
 }
 
 if (isset($_POST['action']) && $_POST['action'] === 'eliminarPedido') {
@@ -751,9 +751,37 @@ function abrirCaja() {
 }
 function cerrarCaja() {
     $conexion = conectar();
-    $sql = $conexion->prepare("UPDATE caja SET abierta = 0 , cantidadActual = 200 WHERE idCaja = 1");
+ 
+    $sql = $conexion->prepare("SELECT cantidadActual FROM caja WHERE idCaja = 1");
     $sql->execute();
+    $resultado = $sql->fetch(PDO::FETCH_ASSOC);
+    
+    $beneficioDiario = $resultado['cantidadActual'] - 200;
+  
+    $sql = $conexion->prepare("UPDATE caja SET abierta = 0, cantidadActual = 200 WHERE idCaja = 1");
+    $sql->execute();
+    
+    actualizarTotales($beneficioDiario, 0);
+
+    // Usar ruta absoluta
+    $rutaArchivo = __DIR__ . "/cajaDiaria.csv";
+    $archivo = fopen($rutaArchivo, "a");
+
+    if ($archivo === false) {
+        die("Error: No se pudo abrir el archivo de texto en la ruta: $rutaArchivo");
+    }
+    
+    $fechaCierre = date("Y-m-d H:i:s"); 
+    $linea = "Fecha: $fechaCierre - Beneficio Diario: $beneficioDiario\n";
+
+    if (fwrite($archivo, $linea) === false) {
+        die("Error: No se pudo escribir en el archivo de texto.");
+    }
+
+    fclose($archivo);
 }
+
+
 
 function obtenerCantidadActual() {
     $conexion = conectar();
