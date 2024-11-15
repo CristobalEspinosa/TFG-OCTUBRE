@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-11-2024 a las 01:47:38
+-- Tiempo de generación: 14-11-2024 a las 23:14:30
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -34,56 +34,57 @@ CREATE TABLE `articulo` (
   `precioCompra` float NOT NULL,
   `stock` int(11) NOT NULL,
   `idProveedor` int(11) NOT NULL,
-  `idCategoria` int(11) NOT NULL
+  `idCategoria` int(11) NOT NULL,
+  `imagen` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `articulo`
 --
 
-INSERT INTO `articulo` (`idArticulo`, `articulo`, `pvp`, `precioCompra`, `stock`, `idProveedor`, `idCategoria`) VALUES
-(1, 'Café Solo', 1, 0.3, 22, 4, 2),
-(2, 'Café Manchado', 1.1, 0.3, 49, 4, 2),
-(3, 'Café Cortado', 1.1, 0.3, 50, 4, 2),
-(4, 'Infusión Manzanilla', 1, 0.3, 50, 4, 10),
-(5, 'Infusión Poleo', 1.1, 0.3, 50, 4, 10),
-(6, 'Infusión Poleo-Menta', 1.1, 0.3, 50, 4, 10),
-(7, 'Té', 1.1, 0.3, 47, 4, 10),
-(8, 'Medio Bocadillo Tortilla', 0.8, 0.5, 34, 1, 9),
-(9, 'Medio Bocadillo Atún', 0.8, 0.5, 33, 1, 9),
-(10, 'Medio Bocadillo Jamón Serrano', 0.8, 0.5, 34, 1, 9),
-(11, 'Medio Bocadillo Jamón Cocido', 0.8, 0.5, 46, 1, 9),
-(12, 'Medio Bocadillo Queso Fresco', 0.8, 0.5, 65, 1, 9),
-(13, 'Entero Bocadillo Tortilla', 1.5, 0.5, 31, 1, 1),
-(14, 'Entero Bocadillo Atún', 1.5, 0.5, 18, 1, 1),
-(15, 'Entero Bocadillo Jamón Serrano', 1.5, 0.5, 33, 1, 1),
-(16, 'Entero Bocadillo Jamón Cocido', 1.5, 0.5, 46, 1, 1),
-(17, 'Entero Bocadillo Queso Fresco', 1.5, 0.5, 65, 1, 1),
-(22, 'Tostada Aceite', 1.5, 0.5, 12, 1, 4),
-(23, 'Tostada Atún', 1.5, 0.5, 23, 1, 4),
-(24, 'Tostada Tomate', 1.5, 0.5, 11, 1, 4),
-(26, 'Pizza Jamón', 1, 0.3, 14, 5, 3),
-(27, 'Pizza Atún', 1, 0.3, 25, 5, 3),
-(30, 'Empanadilla Jamón', 0.7, 0.2, 17, 1, 8),
-(31, 'Empanadilla Atún', 0.7, 0.2, 23, 1, 8),
-(32, 'Chicle Melón', 0.1, 0.05, 45, 3, 5),
-(33, 'Chicle Limón', 0.1, 0.05, 64, 3, 5),
-(34, 'Chicle Sandía', 0.1, 0.05, 55, 3, 5),
-(35, 'Chicle Menta', 0.1, 0.05, 59, 3, 5),
-(36, 'Caramelo', 0.1, 0.05, 63, 3, 5),
-(37, 'Bolsa Patatas Fritas', 0.35, 0.1, 13, 2, 7),
-(38, 'Bolsa Doritos', 0.35, 0.1, 24, 2, 7),
-(39, 'Bolsa Gusanitos', 0.35, 0.1, 33, 2, 7),
-(40, 'Bolsa Fantasmitos', 0.35, 0.1, 18, 2, 7),
-(41, 'Fanta de Naranja', 1.2, 0.5, 43, 2, 6),
-(42, 'Fanta de Limón', 1.2, 0.5, 18, 2, 6),
-(43, 'CocaCola', 1.2, 0.5, -3, 2, 6),
-(44, 'Nestea', 1.2, 0.5, 46, 2, 6),
-(45, 'Aquarius', 1.2, 0.5, 34, 2, 6),
-(46, 'Agua', 1.2, 0.5, 100, 2, 6),
-(47, 'Tostada Aguacate', 1.5, 0.5, 17, 1, 4),
-(48, 'Chicle Fresa', 0.1, 0.05, 45, 3, 5),
-(49, 'ejemplo', 1.09, 0.8, 34, 1, 8);
+INSERT INTO `articulo` (`idArticulo`, `articulo`, `pvp`, `precioCompra`, `stock`, `idProveedor`, `idCategoria`, `imagen`) VALUES
+(1, 'Café Solo', 1, 0.3, 22, 4, 2, 'cafe solo.jpg'),
+(2, 'Café Manchado', 1.1, 0.3, 49, 4, 2, 'cafe solo.jpg'),
+(3, 'Café Cortado', 1.1, 0.3, 50, 4, 2, 'cafe cortado.jpg'),
+(4, 'Infusión Manzanilla', 1, 0.3, 50, 4, 10, 'te.jpg'),
+(5, 'Infusión Poleo', 1.1, 0.3, 50, 4, 10, 'te.jpg'),
+(6, 'Infusión Poleo-Menta', 1.1, 0.3, 50, 4, 10, 'te.jpg'),
+(7, 'Té', 1.1, 0.3, 47, 4, 10, 'te.jpg'),
+(8, 'Medio Bocadillo Tortilla', 0.8, 0.5, 34, 1, 9, 'bocadillo.png'),
+(9, 'Medio Bocadillo Atún', 0.8, 0.5, 33, 1, 9, 'bocadillo.png'),
+(10, 'Medio Bocadillo Jamón Serrano', 0.8, 0.5, 34, 1, 9, 'bocadillo.png'),
+(11, 'Medio Bocadillo Jamón Cocido', 0.8, 0.5, 46, 1, 9, 'bocadillo.png'),
+(12, 'Medio Bocadillo Queso Fresco', 0.8, 0.5, 65, 1, 9, 'bocadillo.png'),
+(13, 'Entero Bocadillo Tortilla', 1.5, 0.5, 31, 1, 1, 'bocadillo.png'),
+(14, 'Entero Bocadillo Atún', 1.5, 0.5, 18, 1, 1, 'bocadillo.png'),
+(15, 'Entero Bocadillo Jamón Serrano', 1.5, 0.5, 33, 1, 1, 'bocadillo.png'),
+(16, 'Entero Bocadillo Jamón Cocido', 1.5, 0.5, 46, 1, 1, 'bocadillo.png'),
+(17, 'Entero Bocadillo Queso Fresco', 1.5, 0.5, 65, 1, 1, 'bocadillo.png'),
+(22, 'Tostada Aceite', 1.5, 0.5, 12, 1, 4, 'tostada.png'),
+(23, 'Tostada Atún', 1.5, 0.5, 23, 1, 4, 'tostada.png'),
+(24, 'Tostada Tomate', 1.5, 0.5, 11, 1, 4, 'tostada.png'),
+(26, 'Pizza Jamón', 1, 0.3, 14, 5, 3, 'pizza jamon.jpg'),
+(27, 'Pizza Atún', 1, 0.3, 25, 5, 3, 'pizza verdura.jpg'),
+(30, 'Empanadilla Jamón', 0.7, 0.2, 17, 1, 8, 'empanadilla.png'),
+(31, 'Empanadilla Atún', 0.7, 0.2, 23, 1, 8, 'empanadilla.png'),
+(32, 'Chicle Melón', 0.1, 0.05, 45, 3, 5, ''),
+(33, 'Chicle Limón', 0.1, 0.05, 64, 3, 5, ''),
+(34, 'Chicle Sandía', 0.1, 0.05, 55, 3, 5, ''),
+(35, 'Chicle Menta', 0.1, 0.05, 59, 3, 5, ''),
+(36, 'Caramelo', 0.1, 0.05, 63, 3, 5, ''),
+(37, 'Bolsa Patatas Fritas', 0.35, 0.1, 13, 2, 7, ''),
+(38, 'Bolsa Doritos', 0.35, 0.1, 24, 2, 7, ''),
+(39, 'Bolsa Gusanitos', 0.35, 0.1, 33, 2, 7, ''),
+(40, 'Bolsa Fantasmitos', 0.35, 0.1, 18, 2, 7, ''),
+(41, 'Fanta de Naranja', 1.2, 0.5, 43, 2, 6, 'fanta naranja.jpg'),
+(42, 'Fanta de Limón', 1.2, 0.5, 18, 2, 6, 'fanta limon.jpg'),
+(43, 'CocaCola', 1.2, 0.5, -3, 2, 6, 'cocacola.jpg'),
+(44, 'Nestea', 1.2, 0.5, 46, 2, 6, 'nestea.jpg'),
+(45, 'Aquarius', 1.2, 0.5, 34, 2, 6, 'aquarius.jpg'),
+(46, 'Agua', 1.2, 0.5, 100, 2, 6, 'agua 33.jpg'),
+(47, 'Tostada Aguacate', 1.5, 0.5, 17, 1, 4, 'tostada.png'),
+(48, 'Chicle Fresa', 0.1, 0.05, 45, 3, 5, ''),
+(49, 'ejemplo', 1.09, 0.8, 34, 1, 8, '');
 
 -- --------------------------------------------------------
 
@@ -107,29 +108,73 @@ INSERT INTO `caja` (`idCaja`, `abierta`, `cantidadActual`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `caja2`
+--
+
+CREATE TABLE `caja2` (
+  `nlinea` int(11) NOT NULL,
+  `numeromesa` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `hora` time NOT NULL,
+  `importetotal` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `caja2`
+--
+
+INSERT INTO `caja2` (`nlinea`, `numeromesa`, `fecha`, `hora`, `importetotal`) VALUES
+(1, 1, '2024-11-14', '23:00:00', 2.7);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `categoria`
 --
 
 CREATE TABLE `categoria` (
   `idCategoria` int(11) NOT NULL,
-  `tipo` varchar(200) NOT NULL
+  `tipo` varchar(200) NOT NULL,
+  `imagen` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `categoria`
 --
 
-INSERT INTO `categoria` (`idCategoria`, `tipo`) VALUES
-(1, 'Bocadillos Enteros'),
-(2, 'Cafes'),
-(3, 'Pizzas'),
-(4, 'Tostadas'),
-(5, 'Chicles'),
-(6, 'Refrescos'),
-(7, 'Bolsas'),
-(8, 'Empanadillas'),
-(9, 'Bocadillos Medios'),
-(10, 'Infusiones');
+INSERT INTO `categoria` (`idCategoria`, `tipo`, `imagen`) VALUES
+(1, 'Bocadillos Enteros', 'bocadillo.png'),
+(2, 'Cafes', 'cafe con leche.jpg'),
+(3, 'Pizzas', 'pizza jamon.jpg'),
+(4, 'Tostadas', 'tostada.png'),
+(5, 'Chicles', 'chuches.png'),
+(6, 'Refrescos', 'cocacola.jpg'),
+(7, 'Bolsas', ''),
+(8, 'Empanadillas', 'empanadilla.png'),
+(9, 'Bocadillos Medios', 'bocadillo.png'),
+(10, 'Infusiones', 'te.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cuenta`
+--
+
+CREATE TABLE `cuenta` (
+  `nlinea` int(11) NOT NULL,
+  `mesa` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `idproducto` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `cuenta`
+--
+
+INSERT INTO `cuenta` (`nlinea`, `mesa`, `cantidad`, `idproducto`) VALUES
+(5, 1, 1, 13),
+(6, 1, 1, 15),
+(8, 1, 2, 45);
 
 -- --------------------------------------------------------
 
@@ -321,10 +366,22 @@ ALTER TABLE `caja`
   ADD PRIMARY KEY (`idCaja`);
 
 --
+-- Indices de la tabla `caja2`
+--
+ALTER TABLE `caja2`
+  ADD PRIMARY KEY (`nlinea`);
+
+--
 -- Indices de la tabla `categoria`
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`idCategoria`);
+
+--
+-- Indices de la tabla `cuenta`
+--
+ALTER TABLE `cuenta`
+  ADD PRIMARY KEY (`nlinea`);
 
 --
 -- Indices de la tabla `horario`
@@ -390,10 +447,22 @@ ALTER TABLE `caja`
   MODIFY `idCaja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `caja2`
+--
+ALTER TABLE `caja2`
+  MODIFY `nlinea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
   MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `cuenta`
+--
+ALTER TABLE `cuenta`
+  MODIFY `nlinea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `horario`

@@ -81,6 +81,7 @@ $cajaAbierta = isCajaAbierta();
 
         <?php if ($esTrabajador && $cajaAbierta): ?>
             <div class="text-center">
+             <a href="./tpv/index.php"><img src="tpv/fotos/tpv.jpg" width="100"></a>
                 <button onclick="cerrarCaja()">Cerrar caja</button>
                 <span id="cantidad-actual">Caja actual:</span>
             </div>
